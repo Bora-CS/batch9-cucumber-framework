@@ -20,7 +20,7 @@ public class Util {
 	}
 	
 	/*
-	 * iFrame
+	 * switch to iFrame
 	 * 
 	 * @Author: Andy Zeng
 	 */
