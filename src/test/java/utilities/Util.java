@@ -18,7 +18,41 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//use javascriptExecutor method click target element
 	//@Author Ning Yang
+	
 	public static void javaScriptClick(WebDriver driver, WebElement elem) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("argument[0].click()", elem);
