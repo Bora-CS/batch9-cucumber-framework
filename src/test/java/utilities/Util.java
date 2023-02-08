@@ -6,7 +6,9 @@ public class Util {
 
 	
 	/*
-	 *  Switches the driver focus between the windows.
+	 *  Switches the driver focus between the windows
+	 *  second edition 
+	 *  please let this be the last time 
  	 *  Author Jolene Jones
 	 */
 		public static void switchTo(WebDriver driver, String pageURL ) {
