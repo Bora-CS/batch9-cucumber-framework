@@ -18,7 +18,6 @@ public class Test {
 			driver = new ChromeDriver();
 			driver.get("https://boratech-practice-app.onrender.com/");
 			driver.findElement(By.xpath("//*[contains(text(), 'Login')]")).click();
-			utilities.Util.sendKey(driver, "Joycechen@gmail.com", "//input[@nname='email']");
 			Thread.sleep(3000);
 		} catch (Exception e) {
 			e.printStackTrace();
