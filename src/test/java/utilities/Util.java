@@ -1,5 +1,9 @@
 package utilities;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 public class Util {
 
 	/*
@@ -14,5 +18,10 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
-
+	//@Author Ning Yang
+	public static void javaScriptClick(WebDriver driver, WebElement elem) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("argument[0].click()", elem);
+		
+	}
 }
