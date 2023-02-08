@@ -20,10 +20,13 @@ public class Util {
 		}
 	}
 
-	// @Author: Wei Wang
+	/*
+	 * Open Website
+	 * 
+	 *  @Author: Wei Wang
+	 */
 	public static void openWebsite(String website) {
 		WebDriver driver = new ChromeDriver();
-		website = "https://demoqa.com/automation-practice-form";
 		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
