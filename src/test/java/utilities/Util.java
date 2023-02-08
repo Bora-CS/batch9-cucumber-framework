@@ -1,5 +1,9 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 public class Util {
 
 	/*
@@ -14,5 +18,17 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * iFrame
+	 * 
+	 * @Author: Andy Zeng
+	 */
+	public static void iFrame(WebDriver driver, String frameElement) {
+		WebElement iFrame = driver.findElement(By.xpath(frameElement));
+		driver.switchTo().frame(iFrame);
+		
+	}
+	
 
 }
