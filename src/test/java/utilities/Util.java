@@ -1,5 +1,8 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 public class Util {
 
 	/*
@@ -15,4 +18,14 @@ public class Util {
 		}
 	}
 
+   /*
+    * Selectdate
+    * 
+    * @Author:Yiping Chen
+    */
+	public static void selectdate(WebDriver driver,String calendarLocator) {
+		driver.findElement(By.xpath(calendarLocator)).click();
+	}
+	
+	
 }
