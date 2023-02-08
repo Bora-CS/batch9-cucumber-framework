@@ -10,6 +10,8 @@ public class Util {
 	 * Sleeps for given number of seconds
 	 */
 	public static void uplad (WebDriver driver, String uploadElement) {		
+			try {
+				
 			/*
 			 * upload file
 			 * @Author: Inhae Jeong
@@ -18,8 +20,12 @@ public class Util {
 				WebElement upload = driver.findElement(By.xpath(uploadElement));
 				upload.sendKeys("C:/Users/Desktop/upload.png");
 				System.out.println("File is Uploaded Successfully");
-			
+
+				Thread.sleep(2000);
+			} catch (Exception e) {
+				e.printStackTrace();
 		}
 	}
+}
 
 
