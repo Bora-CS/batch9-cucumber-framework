@@ -8,8 +8,9 @@ public class Util {
 	/*
 	 *  Switches the driver focus between the windows.
  	 *  Author Jolene Jones
+ 	 *  Published 2/8/2023
 	 */
-		public static void switchTo(WebDriver driver, String pageURL ) {
+		public static void switchTo( String pageURL, WebDriver driver ) {
 			
 			
 			String pageURL = driver.getCurrentUrl();
