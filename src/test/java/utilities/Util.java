@@ -19,6 +19,7 @@ public class Util {
 
 }
 	/*
+	 * Hopefully rhis should work
 	 * Switches the driver focus between the windows. 
 	 * Author Jolene Jones 
 	 * 2nd edition 
