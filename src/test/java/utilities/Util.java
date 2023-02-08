@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 public class Util {
 
 	/*
-	 * 
 	 * Clicks on button or links based on xpath
 	 * @Author: Jack Vu
 	 * 
