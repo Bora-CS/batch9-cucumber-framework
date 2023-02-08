@@ -1,5 +1,10 @@
 package utilities;
 
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 public class Util {
 
 	/*
@@ -15,4 +20,12 @@ public class Util {
 		}
 	}
 
+	// @Author: Wei Wang
+	public static void openWebsite(String website) {
+		WebDriver driver = new ChromeDriver();
+		website = "https://demoqa.com/automation-practice-form";
+		driver.get(website);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().window().maximize();
+	}
 }
