@@ -1,5 +1,9 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 public class Util {
 
 	/*
@@ -7,12 +11,17 @@ public class Util {
 	 * 
 	 * @Author: Muradil Erkin
 	 */
-	public static void wait(int seconds) {
-		try {
-			Thread.sleep(seconds * 1000);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static void uplad (WebDriver driver, String uploadElement) {		
+			/*
+			 * upload file
+			 * @Author: Inhae Jeong
+			 * 
+			 */
+				WebElement upload = driver.findElement(By.xpath(uploadElement));
+				upload.sendKeys("C:/Users/Desktop/upload.png");
+				System.out.println("File is Uploaded Successfully");
+			
 		}
 	}
 
-}
+
