@@ -6,12 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class Util {
 
-	/*
-	 * Sleeps for given number of seconds
-	 */
 	public static void uplad (WebDriver driver, String uploadElement) {		
 			try {
-				
 			/*
 			 * upload file
 			 * @Author: Inhae Jeong
