@@ -27,7 +27,7 @@ public class Util {
 	 */
 	public static void openWebsite(String website, WebDriver driver) {
 
-		driver.get("website");
+		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
