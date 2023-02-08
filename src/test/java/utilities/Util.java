@@ -1,5 +1,12 @@
 package utilities;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class Util {
 
 	/*
@@ -15,4 +22,15 @@ public class Util {
 		}
 	}
 
+	/*
+	 * Switch to Alert then confirm
+	 *
+	 * @Author: Olvia Wang
+	 */
+	public static void alertToconfirm(WebDriver driver) {
+		
+		driver.switchTo().alert().accept();
+	}
+	
+	
 }
