@@ -1,16 +1,21 @@
 package utilities;
 
+import org.openqa.selenium.WebDriver;
+
 public class Util {
 
+	
 	/*
-	 * Sleeps for given number of seconds
+	 *  Switches the driver focus between the windows.
+ 	 *  Author Jolene Jones
 	 */
-	public static void wait(int seconds) {
-		try {
-			Thread.sleep(seconds * 1000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		public static void switchTo(WebDriver driver, String pageURL ) {
+			
+			
+			String pageURL = driver.getCurrentUrl();
+			driver.switchTo().window(pageURL);
+
+
 	}
 
 }
