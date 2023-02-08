@@ -1,5 +1,9 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+
 public class Util {
 
 	/*
@@ -13,4 +17,17 @@ public class Util {
 		}
 	}
 
+	/*
+	 * Select Drop-down option
+	 * @author Wenji Zou
+	 */
+	public static void dropDownSelect(WebDriver driver, String dorpDownXpath, String optionValue) {
+		Select dropDown = new Select(driver.findElement(By.xpath(dorpDownXpath)));
+		dropDown.selectByValue(optionValue);
+		
+	}
+	
+	
+	
+	
 }
