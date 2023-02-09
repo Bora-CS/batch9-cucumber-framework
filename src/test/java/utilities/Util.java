@@ -5,19 +5,21 @@ import org.openqa.selenium.WebDriver;
 
 public class Util {
 
-	}		
+	public static void commandClearFunction(WebDriver driver) {
+		try {
+			driver.findElement(By.id("UserName")).clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}	
+	
 	/*
 	 * Sleeps for given number of seconds
 	 * 
 	 * @Author: Nancy Nguyen
 	 */
 	
-	
-	public static void commandClearFunction(WebDriver driver) {
-		try {
-			driver.findElement(By.id("UserName")).clear();
-		} catch (Exception e) {
-			e.printStackTrace();
 			
 	public static void wait(int seconds) {
 		try {
