@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class Util {
 
 	/*
-	 * Clicks on buttons
+	 * Clicks on button
 	 * 
 	 * @Author: Jack Vu
 	 * 
