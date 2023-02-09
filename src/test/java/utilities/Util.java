@@ -9,8 +9,12 @@ public class Util {
 	
 	
 	public static void commandClearFunction(WebDriver driver) {
-		driver.findElement(By.id("UserName")).clear();
-	}
+		try {
+			driver.findElement(By.id("UserName")).clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+	}		
 	/*
 	 * Sleeps for given number of seconds
 	 * 
