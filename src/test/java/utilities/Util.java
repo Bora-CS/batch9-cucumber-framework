@@ -11,14 +11,14 @@ public class Util {
      * @Author: surayya Abraham
      * 
      */
-	public static void dragAndDropAcions(WebDriver driver, String sourceXpath , String targetXpath) {
+	public static void dragAndDropAcions(WebDriver driver, By locator1 , By locator2) {
 		Actions action = new Actions(driver);
-		WebElement drage = driver.findElement(By.xpath("sourceXpath"));
-		WebElement drop = driver.findElement(By.xpath("targetXpath"));
+		WebElement drage = driver.findElement(locator1);
+		WebElement drop = driver.findElement(locator2);
 		 action.dragAndDrop(drage, drop).perform();
 	}
 	/*
-	 * Sleeps for given number of seconds
+	 * Sleeps for given number of second
 	 */
 	public static void wait(int seconds) {
 		try {
