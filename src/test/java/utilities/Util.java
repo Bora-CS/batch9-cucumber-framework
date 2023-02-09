@@ -1,7 +1,16 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 public class Util {
 
+	
+	
+	
+	public static void commandClearFunction(WebDriver driver) {
+		driver.findElement(By.id("UserName")).clear();
+	}
 	/*
 	 * Sleeps for given number of seconds
 	 * 
