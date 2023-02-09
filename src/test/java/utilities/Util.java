@@ -5,20 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Util {
+
 	/*
 	 * Checks if an element is displayed
 	 * 
 	 * @Author: Nilupar Erkin
 	 */
-	
-	public static boolean isElementDisplayed(WebDriver driver, String xPathOfElement) {
+	public static boolean isElementDisplayed(WebDriver driver, By locator) {
 		try {
-			WebElement element = driver.findElement(By.xpath(xPathOfElement));
+			WebElement element = driver.findElement(locator);
 			return element.isDisplayed();
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
 
 	/*
@@ -30,7 +30,6 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 
