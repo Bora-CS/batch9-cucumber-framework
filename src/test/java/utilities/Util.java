@@ -21,7 +21,7 @@ public class Util {
 	 * @Author: Flora Erkin
 	 * 
 	 */
-	public void sendKeysToElement(WebElement element, String text) {
+	public static void sendKeysToElement(WebElement element, String text) {
 
 		element.clear();
 		element.sendKeys(text);
