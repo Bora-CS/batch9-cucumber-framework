@@ -3,6 +3,7 @@ package utilities;
 import org.openqa.selenium.WebElement;
 
 public class Util {
+
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -13,8 +14,10 @@ public class Util {
 			Thread.sleep(seconds * 1000);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
 	}
+}
+
+
 
 	/*
 	 * Clear and enter
