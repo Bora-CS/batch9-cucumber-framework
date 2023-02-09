@@ -24,7 +24,10 @@ public class Util {
 
 	/*
 	 * moveToElement
-	 * public static void  moveToElement() throws InterruptedException {
+	 * 
+	 * @Mustafa
+	 */
+	  public static void  moveToElement() throws InterruptedException {
 		System.setProperty("webdriver.chrome,driver", "src/test/resources/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://demoqa.com/droppable");
@@ -35,6 +38,5 @@ public class Util {
 		WebElement targetLocation = driver.findElement(By.id("toolTipButton"));
 		Thread.sleep(3000);
 		actions.moveToElement(targetLocation).build().perform();
-	 * @Author: Mustafa W
-	 */
+	  }  
 }
