@@ -5,7 +5,7 @@ public class Util {
 	/*
 	 * Sleeps for given number of seconds
 	 * 
-	 * @Author: Muradil Erkin
+	 * @Author: Shaoling Stouder
 	 */
 	public static void wait(int seconds) {
 		try {
