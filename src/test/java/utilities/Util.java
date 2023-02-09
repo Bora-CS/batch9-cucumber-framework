@@ -1,14 +1,14 @@
 package utilities;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.Set;
+import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,23 +20,26 @@ import org.openqa.selenium.WebElement;
 public class Util {
 	/*
 	 * Selecting Drop Down List by invisible text
+	 * 
 	 * @Author: Subhinur Muhammad
 	 */
 	public static void selectByVisibleText(WebElement element, String text) {
-		
+
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
-		
+
 	}
-	
+
 	/*
 	 * Adding string in text field
+	 * 
 	 * @Author: Subhinur Muhammad
 	 */
-	public static void  addText(WebDriver driver, By locator, String value) {
-		WebElement field = driver.findElement(locator); 
+	public static void addText(WebDriver driver, By locator, String value) {
+		WebElement field = driver.findElement(locator);
 		field.sendKeys(value);
 	}
+
 	/*
 	 * Clicks on button
 	 * 
@@ -81,10 +84,31 @@ public class Util {
 	}
 
 	/*
-	 * Open Website
+	 * Switches the driver focus to the next available window
+	 * 
+	 * @Author: Erlyn Gammad
+	 */
+	public static void switchToNextAvailableWindow(WebDriver driver) {
+		try {
+			String parentHandle = driver.getWindowHandle();
+			Set<String> allWindows = driver.getWindowHandles();
+
+			for (String child : allWindows) {
+				if (!child.equals(parentHandle)) {
+					driver.switchTo().window(child);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * Open Website**
 	 * 
 	 * @Author: Wei Wang
 	 */
+
 	public static void openWebsite(String website, WebDriver driver) {
 
 		driver.get(website);
