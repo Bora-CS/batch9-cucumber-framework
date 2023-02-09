@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class Util {
-
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -19,24 +18,21 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-
+}
 	/*
 	 * moveToElement
 	 * 
 	 * @Mustafa
 	 */
-	  public static void  moveToElement() throws InterruptedException {
-		System.setProperty("webdriver.chrome,driver", "src/test/resources/chromedriver");
+	public static void main(String[] args) throws InterruptedException {
+
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://demoqa.com/droppable");
-		driver.manage().window().maximize();
-		
+
 		Actions actions = new Actions(driver);
-		
+
 		WebElement targetLocation = driver.findElement(By.id("toolTipButton"));
 		Thread.sleep(3000);
 		actions.moveToElement(targetLocation).build().perform();
-	  }  
+	}
 }
