@@ -18,21 +18,18 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-}
+	}
+
 	/*
 	 * moveToElement
 	 * 
 	 * @Mustafa
 	 */
-	public static void main(String[] args) throws InterruptedException {
-
-		WebDriver driver = new ChromeDriver();
-		driver.get("https://demoqa.com/droppable");
+	public static void moveToElement(WebDriver driver, WebElement element) {
 
 		Actions actions = new Actions(driver);
 
 		WebElement targetLocation = driver.findElement(By.id("toolTipButton"));
-		Thread.sleep(3000);
 		actions.moveToElement(targetLocation).build().perform();
 	}
 }
