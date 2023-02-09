@@ -5,7 +5,12 @@ import org.openqa.selenium.WebDriver;
 
 public class Util {
 
-	
+	}		
+	/*
+	 * Sleeps for given number of seconds
+	 * 
+	 * @Author: Nancy Nguyen
+	 */
 	
 	
 	public static void commandClearFunction(WebDriver driver) {
@@ -14,12 +19,6 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 			
-	}		
-	/*
-	 * Sleeps for given number of seconds
-	 * 
-	 * @Author: Muradil Erkin
-	 */
 	public static void wait(int seconds) {
 		try {
 			Thread.sleep(seconds * 1000);
