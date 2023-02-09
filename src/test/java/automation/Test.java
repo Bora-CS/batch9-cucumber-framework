@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import utilities.DriverManager;
+import utilities.Util;
 
 public class Test {
 
@@ -17,6 +18,8 @@ public class Test {
 			driver = new ChromeDriver();
 			driver.get("https://boratech-practice-app.onrender.com/");
 			driver.findElement(By.xpath("//*[contains(text(), 'Login')]")).click();
+			
+				
 			Thread.sleep(3000);
 		} catch (Exception e) {
 			e.printStackTrace();
