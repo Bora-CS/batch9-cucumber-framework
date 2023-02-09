@@ -5,14 +5,18 @@ import org.openqa.selenium.WebDriver;
 
 public class Util {
 
-	
 	/*
-	 * Clicks on buttons based on xpath of button 
-	 * @Author: Jack Vu 
+	 * Clicks on buttons
+	 * 
+	 * @Author: Jack Vu
 	 * 
 	 */
-	public static void buttonClickFunction(WebDriver driver, String xpathOfButton) {
-		driver.findElement(By.xpath(xpathOfButton)).click();
+	public static void buttonClickFunction(WebDriver driver, By pathOfButton) {
+		try {
+			driver.findElement(pathOfButton).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*
