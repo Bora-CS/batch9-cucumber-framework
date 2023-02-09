@@ -1,15 +1,20 @@
 package utilities;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 public class Util {
 
 	/*
-	 * Sleeps for given number of seconds
+	 * Selecting drop down list by invisible text;
 	 * 
-	 * @Author: Muradil Erkin
+	 * @Author: Subhinur Muhammad;
 	 */
-	public static void wait(int seconds) {
+	public static void selectByVisibleText(WebElement element, String text) {
 		try {
-			Thread.sleep(seconds * 1000);
+			Select select = new Select(element);
+			select.selectByVisibleText(text);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
