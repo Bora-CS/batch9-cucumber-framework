@@ -16,9 +16,6 @@ public class Util {
 			e.printStackTrace();
 	}
 }
-
-
-
 	/*
 	 * Clear and enter
 	 * @Author: Flora Erkin
