@@ -9,12 +9,22 @@ import org.openqa.selenium.interactions.Actions;
 public class Util {
 
 	/*
-	 * moveToElement
+	 * Sleeps for given number of seconds
 	 * 
-	 * @Author: Mustafa Wumaier
-	 * 
+	 * @Author: Muradil Erkin
 	 */
-	public static void  moveToElement() throws InterruptedException {
+	public static void wait(int seconds) {
+		try {
+			Thread.sleep(seconds * 1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+	/*
+	 * moveToElement
+	 * public static void  moveToElement() throws InterruptedException {
 		System.setProperty("webdriver.chrome,driver", "src/test/resources/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://demoqa.com/droppable");
@@ -25,6 +35,5 @@ public class Util {
 		WebElement targetLocation = driver.findElement(By.id("toolTipButton"));
 		Thread.sleep(3000);
 		actions.moveToElement(targetLocation).build().perform();
-	}
-
-}
+	 * @Author: Mustafa W
+	 */
