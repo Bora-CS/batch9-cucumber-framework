@@ -16,11 +16,11 @@ public class Util {
 	 */
 	
 
-	public static void selectMulti(WebDriver driver, String xpathLocator, String optionValue) {
-	Select multiElem = new Select(driver.findElement(By.xpath(xpathLocator)));
+	public static void selectMulti(WebDriver driver, By locator, String value1,String value2) {
+	Select multiElem = new Select(driver.findElement(locator));
 
-	multiElem.selectByValue(optionValue);
-	multiElem.selectByValue(optionValue);
+	multiElem.selectByValue(value1);
+	multiElem.selectByValue(value2);
 	
 	List<WebElement> lists = multiElem.getOptions();
 	for(WebElement options:lists) {
@@ -29,8 +29,6 @@ public class Util {
 		
 			}
 		}
-		
-	
 		
 	
 	
