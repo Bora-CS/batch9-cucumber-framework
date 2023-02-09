@@ -1,5 +1,8 @@
 package utilities;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 public class Util {
 
 	/*
@@ -14,5 +17,16 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/*
+	 * HomeWork2-7
+	 * 
+	 * @Author: claire zhang
+	 */
+	public static void targetLocation(WebDriver driver, String targetLocation) {
+			
+		driver.findElement(By.xpath(targetLocation)).click();
+		driver.switchTo().alert().accept();
+	
+	}
 }
