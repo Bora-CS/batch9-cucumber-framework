@@ -16,10 +16,10 @@ public class Util {
 			e.printStackTrace();
 	}
 }
+	
 	/*
 	 * Clear and enter
 	 * @Author: Flora Erkin
-	 * 
 	 */
 	public static void sendKeysToElement(WebElement element, String text) {
 
