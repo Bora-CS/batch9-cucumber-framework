@@ -10,6 +10,9 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 public class Util {
 	/*
 	 * Selecting Drop Down List by invisible text
@@ -30,6 +33,20 @@ public class Util {
 		WebElement field = driver.findElement(locator); 
 		field.sendKeys(value);
 	}
+	/*
+	 * Clicks on button
+	 * 
+	 * @Author: Jack Vu
+	 * 
+	 */
+	public static void buttonClickFunction(WebDriver driver, By pathOfButton) {
+		try {
+			driver.findElement(pathOfButton).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/*
 	 * Sleeps for given number of seconds
 	 * 
