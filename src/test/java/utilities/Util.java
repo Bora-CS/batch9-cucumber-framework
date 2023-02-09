@@ -1,9 +1,9 @@
 package utilities;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 
 import java.time.Duration;
 
@@ -14,23 +14,26 @@ import org.openqa.selenium.WebElement;
 public class Util {
 	/*
 	 * Selecting Drop Down List by invisible text
+	 * 
 	 * @Author: Subhinur Muhammad
 	 */
 	public static void selectByVisibleText(WebElement element, String text) {
-		
+
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
-		
+
 	}
-	
+
 	/*
 	 * Adding string in text field
+	 * 
 	 * @Author: Subhinur Muhammad
 	 */
-	public static void  addText(WebDriver driver, By locator, String value) {
-		WebElement field = driver.findElement(locator); 
+	public static void addText(WebDriver driver, By locator, String value) {
+		WebElement field = driver.findElement(locator);
 		field.sendKeys(value);
 	}
+
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -43,17 +46,18 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
-	 * sendKey function
-	 * Author:Joyce
+	 * sendKeys function
+	 * 
+	 * @Author: Joyce
 	 */
-	public static void sendKey(WebDriver driver,String value,By locator) {
-		WebElement ele = driver.findElement(locator);
-		ele.clear();
+	public static void sendKeys(WebDriver driver, String value, By locator) {
 		try {
+			WebElement ele = driver.findElement(locator);
+			ele.clear();
 			ele.sendKeys(value);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
