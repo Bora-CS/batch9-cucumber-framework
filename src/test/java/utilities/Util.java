@@ -8,17 +8,17 @@ import org.openqa.selenium.interactions.Actions;
 public class Util {
 	
     /*
-     * @Author: surayya Abraham
-     * 
+     * Drag and drop actions 
+     * @Author: Surayya Abraham 
      */
-	public static void dragAndDropAcions(WebDriver driver, By locator1 , By locator2) {
+	public static void dragAndDropAcions(WebDriver driver, By soureLocator , By targetLocator) {
 		Actions action = new Actions(driver);
-		WebElement drage = driver.findElement(locator1);
-		WebElement drop = driver.findElement(locator2);
-		 action.dragAndDrop(drage, drop).perform();
+		WebElement drage = driver.findElement(soureLocator);
+		WebElement drop = driver.findElement(targetLocator);
+		 action.dragAndDrop(drage, drop).perform();	 
 	}
 	/*
-	 * Sleeps for given number of second
+	 * Sleeps for given number of seconds
 	 */
 	public static void wait(int seconds) {
 		try {
