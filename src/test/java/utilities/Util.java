@@ -27,9 +27,13 @@ public class Util {
 	 *
 	 * @Author: Olvia Wang
 	 */
-	public static void alertToconfirm(WebDriver driver) {
-		
-		driver.switchTo().alert().accept();
+	public static void confirmAlert(WebDriver driver) {
+		try {
+			driver.switchTo().alert().accept();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 }
