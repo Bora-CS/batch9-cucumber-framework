@@ -1,7 +1,8 @@
 package utilities;
 
-public class Util {
+import org.openqa.selenium.WebElement;
 
+public class Util {
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -15,4 +16,15 @@ public class Util {
 		}
 	}
 
+	/*
+	 * Clear and enter
+	 * @Author: Flora Erkin
+	 * 
+	 */
+	public void sendKeysToElement(WebElement element, String text) {
+
+		element.clear();
+		element.sendKeys(text);
+
+	}
 }
