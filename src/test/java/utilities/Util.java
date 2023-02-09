@@ -11,7 +11,8 @@ public class Util {
 	/*
 	 * moveToElement
 	 * 
-	 * @Author: Mustafa W
+	 * @Author: Mustafa Wumaier
+	 * 
 	 */
 	public static void  moveToElement() throws InterruptedException {
 		System.setProperty("webdriver.chrome,driver", "src/test/resources/chromedriver");
