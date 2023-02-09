@@ -1,13 +1,12 @@
 package utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
 
 	/*
 	 * Sleeps for given number of seconds
+	 * 
+	 * @Author: Muradil Erkin
 	 */
 	public static void wait(int seconds) {
 		try {
@@ -31,4 +30,15 @@ public class Util {
 		}
 	}
 
+	/*
+	 * Open Website
+	 * 
+	 * @Author: Wei Wang
+	 */
+	public static void openWebsite(String website, WebDriver driver) {
+
+		driver.get(website);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().window().maximize();
+	}
 }
