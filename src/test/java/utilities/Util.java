@@ -48,8 +48,8 @@ public class Util {
 	 * sendKey function
 	 * Author:Joyce
 	 */
-	public static void sendKey(WebDriver driver,String value,String xpathLocator) {
-		WebElement ele = driver.findElement(By.xpath(xpathLocator));
+	public static void sendKey(WebDriver driver,String value,By locator) {
+		WebElement ele = driver.findElement(locator);
 		ele.clear();
 		try {
 			ele.sendKeys(value);
