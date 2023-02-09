@@ -20,7 +20,7 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
-}
+
 
 	/*
 	 * moveToElement
@@ -37,3 +37,4 @@ public class Util {
 		actions.moveToElement(targetLocation).build().perform();
 	 * @Author: Mustafa W
 	 */
+}
