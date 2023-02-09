@@ -19,43 +19,42 @@ public class Util {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//use javascriptExecutor method click target element
-	//@Author Ning Yang
-	
+	/*
+	 * @Author Ning Yang
+	use javascriptExecutor method click target element	
+	*/
 	public static void javaScriptClick(WebDriver driver, WebElement elem) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("argument[0].click()", elem);
-		
+			
+		}
 	}
-}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
