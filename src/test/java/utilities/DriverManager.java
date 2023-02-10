@@ -2,8 +2,11 @@ package utilities;
 
 import java.util.Properties;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 =======
+=======
+>>>>>>> Stashed changes
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -31,6 +34,10 @@ public class DriverManager {
 
 		for (Object key : keys) {
 			System.out.println("Key: " + key + " - Value: " + sProps.get(key));
+<<<<<<< Updated upstream
+=======
+		}
+>>>>>>> Stashed changes
 		}
 		}
 >>>>>>> Stashed changes
