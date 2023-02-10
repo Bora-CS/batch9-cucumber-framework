@@ -20,12 +20,11 @@ public class Util {
 	}
 
 	/*
-	 * Switches the driver focus to the child window
+	 * Switches the driver focus to the next available window
 	 * 
 	 * @Author: Erlyn Gammad
 	 */
-
-	public static void switchToSeparateWindow(WebDriver driver) {
+	public static void switchToNextAvailableWindow(WebDriver driver) {
 		try {
 			String parentHandle = driver.getWindowHandle();
 			Set<String> allWindows = driver.getWindowHandles();
