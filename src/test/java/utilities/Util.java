@@ -1,5 +1,6 @@
 package utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Util {
@@ -18,12 +19,11 @@ public class Util {
 }
 	
 	/*
-	 * Clear and enter
+	 * Insert text in text box
 	 * @Author: Flora Erkin
 	 */
-	public static void sendKeysToElement(WebElement element, String text) {
-		element.clear();
-		element.sendKeys(text);
-
+	public static void insertText(WebElement driver , String text , By locator) {
+		WebElement textBox = driver.findElement(locator);
+		textBox.sendKeys(text);
 	}
 }
