@@ -5,6 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
+<<<<<<< HEAD
+=======
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.Set;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+>>>>>>> 5965ec1815c011669d29b323aa0504f15585436c
 
 public class Util {
 	/*
@@ -29,6 +43,38 @@ public class Util {
 		field.sendKeys(value);
 	}
 
+<<<<<<< HEAD
+=======
+	/*
+	 * Clicks on button
+	 * 
+	 * @Author: Jack Vu
+	 * 
+	 */
+	public static void buttonClickFunction(WebDriver driver, By pathOfButton) {
+		try {
+			driver.findElement(pathOfButton).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * Checks if an element is displayed
+	 * 
+	 * @Author: Nilupar Erkin
+	 */
+	public static boolean isElementDisplayed(WebDriver driver, By locator) {
+		try {
+			WebElement element = driver.findElement(locator);
+			return element.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
+>>>>>>> 5965ec1815c011669d29b323aa0504f15585436c
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -40,13 +86,35 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	/*
-	 * Open Website
+	 * Switches the driver focus to the next available window
+	 * 
+	 * @Author: Erlyn Gammad
+	 */
+	public static void switchToNextAvailableWindow(WebDriver driver) {
+		try {
+			String parentHandle = driver.getWindowHandle();
+			Set<String> allWindows = driver.getWindowHandles();
+
+			for (String child : allWindows) {
+				if (!child.equals(parentHandle)) {
+					driver.switchTo().window(child);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * Open Website**
 	 * 
 	 * @Author: Wei Wang
 	 */
+
 	public static void openWebsite(String website, WebDriver driver) {
 
 		driver.get(website);
