@@ -1,5 +1,8 @@
 package utilities;
 
+
+import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 
 public class Util {
@@ -18,19 +21,25 @@ public class Util {
 	}
 
 }
-	/*
-	 * Hopefully rhis should work
-	 * Switches the driver focus between the windows. 
-	 * Author Jolene Jones 
-	 * 2nd edition 
-	 * Published 2/8/2023
+
+
+    /* Switches the driver focus between the windows.
+	 * 
+	 * @Author Jolene Jones
 	 */
 
-	public static void switchTo(String pageURL, WebDriver driver) {
+	public static void switchTo(WebDriver driver, By locater) {
 
-		String pageURL = driver.getCurrentUrl();
-		driver.switchTo().window(pageURL);
+		String parent = driver.getWindowHandle();
+		driver.findElement(locater).click();
+		for (String newwin : driver.getWindowHandles()) {
+			driver.switchTo().window(newwin);
+		}
+		driver.close();
+		driver.switchTo().window(parent);
 
 	}
+
+}
 
 }
