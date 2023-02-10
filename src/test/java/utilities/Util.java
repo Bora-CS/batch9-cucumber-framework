@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.util.Set;
 
 public class Util {
-	
+
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
@@ -80,8 +80,12 @@ public class Util {
 	 * @Author: Andy Zeng
 	 */
 	public static void iFrame(WebDriver driver, By locator) {
-		WebElement iFrame = driver.findElement(locator);
-		driver.switchTo().frame(iFrame);
+		try {
+			WebElement iFrame = driver.findElement(locator);
+			driver.switchTo().frame(iFrame);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
