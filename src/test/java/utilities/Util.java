@@ -17,7 +17,6 @@ public class Util {
 	public static void selectByVisibleText(WebElement element, String text) {
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
-		System.out.println("Hola");
 	}
 
 	/*
