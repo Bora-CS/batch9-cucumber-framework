@@ -4,21 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import java.time.Duration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 public class Util {
+	
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
 	 * @Author: Subhinur Muhammad
 	 */
 	public static void selectByVisibleText(WebElement element, String text) {
-
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
 
@@ -68,7 +63,6 @@ public class Util {
 	 * @Author: Wei Wang
 	 */
 	public static void openWebsite(String website, WebDriver driver) {
-
 		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
