@@ -2,8 +2,7 @@ package utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-<<<<<<< HEAD
-=======
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
@@ -18,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
->>>>>>> 5965ec1815c011669d29b323aa0504f15585436c
+
 
 public class Util {
 	/*
@@ -125,7 +124,7 @@ public class Util {
 	 * @Author Jolene Jones
 	 */
 
-	public static void switchTo(WebDriver driver, By locater) {
+	public static void switchToNewWindows(WebDriver driver, By locater) {
 
 		String parent = driver.getWindowHandle();
 		driver.findElement(locater).click();
