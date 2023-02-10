@@ -5,20 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
-<<<<<<< HEAD
-=======
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.Set;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
->>>>>>> 5965ec1815c011669d29b323aa0504f15585436c
 
 public class Util {
 	/*
@@ -43,8 +31,6 @@ public class Util {
 		field.sendKeys(value);
 	}
 
-<<<<<<< HEAD
-=======
 	/*
 	 * Clicks on button
 	 * 
@@ -74,7 +60,6 @@ public class Util {
 
 	}
 
->>>>>>> 5965ec1815c011669d29b323aa0504f15585436c
 	/*
 	 * Sleeps for given number of seconds
 	 * 
@@ -121,13 +106,14 @@ public class Util {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
-	
+
 	/*
 	 * dropDownSelect
 	 * 
 	 * @Author: Wenji Zou
 	 */
 	public static void dropDownSelect(WebDriver driver, By locator, String optionValue) {
+
 		Select dropDown = new Select(driver.findElement(locator));
 		dropDown.selectByValue(optionValue);
 
