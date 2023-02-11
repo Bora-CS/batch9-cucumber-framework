@@ -2,16 +2,22 @@ package utilities;
 
 public class Util {
 	
-/* helloWorld function
+/* addNumbers function
  * author zulfia
  */
-	
-	public static void main(String[]args) {
+	public static void main(String[]argrs) {
 		
+		welcome();
 	}
-	public static int addNumbers(int a, int b) {
-	    return a + b;
-	}
+	
+	
+	
+	    	
+	    public static void welcome() {
+	    	System.out.println("Welcome to our garden");
+	    }
+	    
+	
 
 	/*
 	 * Sleeps for given number of seconds
