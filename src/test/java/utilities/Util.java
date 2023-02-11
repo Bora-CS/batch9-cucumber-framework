@@ -1,6 +1,17 @@
 package utilities;
 
 public class Util {
+	
+/* helloWorld function
+ * author zulfia
+ */
+	
+	public static void main(String[]args) {
+		
+	}
+	public static int addNumbers(int a, int b) {
+	    return a + b;
+	}
 
 	/*
 	 * Sleeps for given number of seconds
@@ -11,6 +22,8 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 }
