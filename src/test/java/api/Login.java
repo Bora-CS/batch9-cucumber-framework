@@ -28,10 +28,10 @@ public class Login {
 		String responseBody = response.getBody().asString();
 		System.out.println(responseBody);
 
-		if (actualStatusCode == StatusCodes.OK.value()) {
-			System.out.println("Test Passed");
-		}else {
-		System.out.println("Test Failed");
+		//if (actualStatusCode == StatusCodes.OK.value()) {
+		//	System.out.println("Test Passed");
+		//}else {
+		//System.out.println("Test Failed");
 
 	}
 
