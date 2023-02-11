@@ -14,8 +14,6 @@ public class Util {
 	 * select multi option
 	 * @Author: Sedef Akyo
 	 */
-	
-
 	public static void selectMulti(WebDriver driver, By locator, String value1,String value2) {
 	Select multiElem = new Select(driver.findElement(locator));
 
