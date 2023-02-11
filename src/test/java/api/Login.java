@@ -18,17 +18,20 @@ public class Login {
 		request.header("Content-Type", "application/json");
 
 		Map<String, String> body = new HashMap<>();
-		body.put("email", "murad@test.com");
-		body.put("password", "abc1234");
+		body.put("email", "shaoling.stouder@gmail.com");
+		body.put("password", "591159slS@");
 
 		request.body(body);
 
 		Response response = request.post(endpoint);
-		int statusCode = response.statusCode();
+		int actualStatusCode = response.statusCode();
 		String responseBody = response.getBody().asString();
-
-		System.out.println(statusCode);
 		System.out.println(responseBody);
+
+		if (actualStatusCode == StatusCodes.OK.value()) {
+			System.out.println("Test Passed");
+		}else {
+		System.out.println("Test Failed");
 
 	}
 
