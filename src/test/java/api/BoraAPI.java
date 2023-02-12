@@ -70,5 +70,15 @@ public class BoraAPI {
 		// TODO: create pojo for profile, which is big project
 
 	}
+	
+	public static Experience addExperience(String token, String text) {
+		String endpoint = "/api/profile/experience";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json"); 
+		
+	}
 
 }
