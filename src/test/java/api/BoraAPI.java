@@ -1,14 +1,11 @@
 package api;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.CreatePostRequestBody;
+import pojo.EducationRequestBody;
+import pojo.ExperienceRequestBody;
 import pojo.LogInRequestBody;
 import pojo.LogInResponseBody;
 import pojo.Post;
@@ -68,6 +65,52 @@ public class BoraAPI {
 		Response response = request.get(endpoint);
 		response.prettyPrint();
 		// TODO: create pojo for profile, which is big project
+
+	}
+
+	/*
+	 * Create Education
+	 * 
+	 * @ Author: Wenji Zou
+	 */
+	public static void createEducation(String token, String school, String degree, String fieldofstudy, String from,
+			String to, String description) {
+
+		String endpoint = "/api/profile/education";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json");
+
+		EducationRequestBody body = new EducationRequestBody(school, degree, fieldofstudy, from, to, description);
+		request.body(body);
+
+		Response response = request.put(endpoint);
+		response.prettyPrint();
+
+	}
+
+	/*
+	 * Create Experience
+	 * 
+	 * @ Author: Wenji Zou
+	 */
+	public static void createExperience(String token, String company, String title, String location, String from,
+			String to, String description) {
+
+		String endpoint = "/api/profile/experience";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json");
+
+		ExperienceRequestBody body = new ExperienceRequestBody(company, title, location, from, to, description);
+		request.body(body);
+
+		Response response = request.put(endpoint);
+		response.prettyPrint();
 
 	}
 
