@@ -14,7 +14,7 @@ public class Util {
 	
 	    	
 	    public static void welcome() {
-	    	System.out.println("Welcome to our garden");
+	    	System.out.println("Welcome to challanges!");
 	    }
 	    
 	
