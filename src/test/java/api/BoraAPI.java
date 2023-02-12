@@ -8,7 +8,10 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import pojo.AddExpeEduResponseBody;
 import pojo.CreatePostRequestBody;
+import pojo.Education;
+import pojo.Experience;
 import pojo.LogInRequestBody;
 import pojo.LogInResponseBody;
 import pojo.Post;
@@ -68,6 +71,39 @@ public class BoraAPI {
 		Response response = request.get(endpoint);
 		response.prettyPrint();
 		// TODO: create pojo for profile, which is big project
+
+	}
+
+	public static AddExpeEduResponseBody AddExperience(String token, String company, String title, String location,
+			String from, String to, boolean current, String description) {
+		String endpoint = "/api/profile/experience";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json");
+		Experience body = new Experience(company, title, location, from, to, current, description);
+		request.body(body);
+
+		Response response = request.put(endpoint);
+		response.prettyPrint();
+		AddExpeEduResponseBody addExpeEduResponseBody = response.as(AddExpeEduResponseBody.class);
+		return addExpeEduResponseBody;
+	}
+
+	public static AddExpeEduResponseBody AddEducation(String token, String school, String degree, String fieldofstudy,
+			String from, String to, boolean current, String description) {
+		String endpoint = "/api/profile/Education";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json");
+		Education body = new Education(school, degree, fieldofstudy, from, to, current, description);
+		request.body(body);
+
+		Response response = request.put(endpoint);
+//		response.prettyPrint();
+		AddExpeEduResponseBody addExpeEduResponseBody = response.as(AddExpeEduResponseBody.class);
+		return addExpeEduResponseBody;
 
 	}
 
