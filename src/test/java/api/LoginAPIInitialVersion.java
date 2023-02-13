@@ -1,12 +1,6 @@
 package api;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.gson.JsonObject;
-
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.LogInRequestBody;
@@ -34,7 +28,7 @@ public class LoginAPIInitialVersion {
 //		body.addProperty("password", "Boratech");
 
 		// Request body as a POJO
-		LogInRequestBody body = new LogInRequestBody("muradil.erkin@boratechschool.com", "Boratech");
+		LogInRequestBody body = new LogInRequestBody("claire@gmail.com", "Du1234");
 
 		request.body(body);
 

@@ -7,9 +7,9 @@ public class LoginTest {
 
 	public static void main(String[] args) {
 
-		String token = BoraAPI.login("muradil.erkin@boratechschool.com", "Boratech");
+		String token = BoraAPI.login("claire@gmail.com", "Du1234");
 
-		Post post = BoraAPI.createPost(token, "Murad Test Post from RestAssured  - 1");
+		Post post = BoraAPI.createPost(token, "This is the new message from RestAssured  - 1");
 
 		System.out.println(post.text);
 		System.out.println(post.name);
