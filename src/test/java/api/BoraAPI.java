@@ -1,11 +1,7 @@
 package api;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.CreatePostRequestBody;
