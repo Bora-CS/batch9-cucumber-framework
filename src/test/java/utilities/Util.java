@@ -1,5 +1,7 @@
 package utilities;
 
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,14 +10,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Set;
-import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
 	/*
@@ -82,6 +78,17 @@ public class Util {
 		}
 
 	}
+	
+	/*
+	 * Use javascriptExecutor method click target element	
+	 * 
+	 * @Author: Ning Yang
+	 */
+	public static void javaScriptClick(WebDriver driver, WebElement elem) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("argument[0].click()", elem);
+		}
+	}
 
 	/*
 	 * Switches the driver focus to the next available window
@@ -116,3 +123,4 @@ public class Util {
 		driver.manage().window().maximize();
 	}
 }
+
