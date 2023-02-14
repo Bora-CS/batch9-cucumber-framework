@@ -1,6 +1,7 @@
 package api;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -8,6 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import pojo.AddEducationRequestBody;
 import pojo.CreatePostRequestBody;
 import pojo.LogInRequestBody;
 import pojo.LogInResponseBody;
@@ -68,7 +70,30 @@ public class BoraAPI {
 		Response response = request.get(endpoint);
 		response.prettyPrint();
 		// TODO: create pojo for profile, which is big project
-
 	}
+	
+	/*
+	 * @Author: Subhinur.Muhammad
+	 */
 
-}
+	public static void addEducation(String token, String school, String degree, String fieldofstudy, String from, String to, String description) {
+		String endpoint = "api/profile/education";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("x-auth-token", token);
+		request.header("Content-Type", "application/json");
+		
+		
+		AddEducationRequestBody body = new AddEducationRequestBody(school,degree,fieldofstudy, from, to, description); 
+		request.body(body);
+		
+		Response response = request.put(endpoint);
+		response.prettyPrint(); 
+	}	
+			
+	}
+	
+	
+
+
