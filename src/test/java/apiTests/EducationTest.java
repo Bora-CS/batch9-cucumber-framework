@@ -9,7 +9,9 @@ public class EducationTest {
 		String token = BoraAPI.login("wenji.zou.z@gmail.com", "123456");
 
 		BoraAPI.createEducation(token, "Best Cook Academy", "Bachelor", "Cooking", "2020-01-01", "2020-02-02",
-				"Fruit and vegetables keep us alive.");
+				"Fruit and vegetables keep us alive.", false);
+
+		
 
 	}
 
