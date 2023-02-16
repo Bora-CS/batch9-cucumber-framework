@@ -2,7 +2,7 @@ package utilities;
 
 public class Util {
 	
-/* addNumbers function
+/* welcome function
  * author zulfia
  */
 	public static void main(String[]argrs) {
