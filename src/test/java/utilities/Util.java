@@ -105,4 +105,23 @@ public class Util {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
+	
+	/*
+	 * switch to iFrame**
+	 * 
+	 * @Author: Anna Zhao
+	 */
+	
+	public static void swithToIframe(WebDriver driver, By locator) {
+		try {
+			WebElement iFrame = driver.findElement(locator);
+			driver.switchTo().frame(iFrame);
+
+			driver.switchTo().defaultContent();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 }
