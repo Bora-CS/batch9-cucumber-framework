@@ -2,6 +2,7 @@ package utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 
 public class Util {
 	/*
@@ -115,4 +117,25 @@ public class Util {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
+}
+	/*
+	 * Switches the driver focus between the windows.
+	 * 
+	 * @Author Jolene Jones
+	 */
+
+	public static void switchToNewWindows(WebDriver driver, By locater) {
+
+		String parent = driver.getWindowHandle();
+		driver.findElement(locater).click();
+		for (String newwin : driver.getWindowHandles()) {
+			driver.switchTo().window(newwin);
+		}
+		driver.close();
+		driver.switchTo().window(parent);
+
+	}
+
+}
+
 }
