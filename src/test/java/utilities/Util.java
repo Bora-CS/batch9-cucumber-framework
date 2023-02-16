@@ -5,19 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Set;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
+
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
@@ -77,6 +68,21 @@ public class Util {
 	public static void wait(int seconds) {
 		try {
 			Thread.sleep(seconds * 1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/*
+	 * switch to iFrame
+	 * 
+	 * @Author: Andy Zeng
+	 */
+	public static void iFrame(WebDriver driver, By locator) {
+		try {
+			WebElement iFrame = driver.findElement(locator);
+			driver.switchTo().frame(iFrame);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
