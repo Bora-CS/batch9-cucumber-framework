@@ -5,29 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Set;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
+
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
 	 * @Author: Subhinur Muhammad
 	 */
 	public static void selectByVisibleText(WebElement element, String text) {
-
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
-
 	}
 
 	/*
@@ -80,7 +69,19 @@ public class Util {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
+	/*
+	 * Switch to Alert then confirm
+	 *
+	 * @Author: Olvia Wang
+	 */
+	public static void confirmAlert(WebDriver driver) {
+		try {
+			driver.switchTo().alert().accept();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*
@@ -104,15 +105,14 @@ public class Util {
 	}
 
 	/*
-	 * Open Website**
+	 * Open WebSite
 	 * 
 	 * @Author: Wei Wang
 	 */
-
 	public static void openWebsite(String website, WebDriver driver) {
-
 		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
+
 }
