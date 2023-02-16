@@ -115,4 +115,19 @@ public class Util {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 	}
+	
+	/*
+	 * Select by Index
+	 * 
+	 * @Author: Anna Zhao
+	 */
+	public static void selectByIndex(WebElement element, int index) {
+		try {
+			Select select = new Select(element);
+			select.selectByIndex(index);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
