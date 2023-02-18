@@ -5,8 +5,11 @@ package pojo;
  * Author: Erlyn Gammad
  */
 public class Experience {
+	public String[] skills; 
 	public String _id;
 	public String user;
+	public String company;
+	public String location;
 	public Experience[] experience;
 
 }

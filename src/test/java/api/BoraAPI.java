@@ -98,8 +98,8 @@ public class BoraAPI {
 	 * 
 	 * Author: Erlyn Gammad
 	 */
-	public static Education addEducation(String token, String school, String degree, String fieldofstudy,
-			String from, String to, String description) {
+	public static Education addEducation(String token, String school, String degree, String fieldofstudy, String from,
+			String to, String description) {
 		String endpoint = "/api/profile/education";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
