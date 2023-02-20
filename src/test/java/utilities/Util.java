@@ -20,16 +20,16 @@ import org.openqa.selenium.WebElement;
 public class Util {
 
 	/*
-	* Click website button
+	* prints Hello
 	* @ @Author: Chiang
 	*/
-	public static void buttonClickFunction(WebDriver driver, By pathOfButton) {
-		try {
-			driver.findElement(pathOfButton).click();
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static void main(String[] args) {
+		String s= new String("Hello");
+		s.concat("Java");
+		System.out.println(s);// prints Hello
 		}
 	}
+
 
 	/*
 	 * Selecting Drop Down List by invisible text
