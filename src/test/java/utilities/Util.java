@@ -18,6 +18,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Util {
+
+	/*
+	* Click website button
+	* @ @Author: Chiang
+	*/
+	public static void buttonClickFunction(WebDriver driver, By pathOfButton) {
+		try {
+			driver.findElement(pathOfButton).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
