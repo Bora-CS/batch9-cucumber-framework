@@ -20,15 +20,27 @@ import org.openqa.selenium.WebElement;
 public class Util {
 
 	/*
-	* prints Hello
-	* @ @Author: Chiang
+	* make time delay
+	* @ @Author: Addie
 	*/
-	public static void main(String[] args) {
-		String s= new String("Hello");
-		s.concat("Java");
-		System.out.println(s);// prints Hello
-		}
-	}
+	public class SleepMessages {
+    public static void main(String args[])
+        throws InterruptedException {
+        String importantInfo[] = {
+            "Kate eat oats",
+            "Does eat oats",
+        };
+
+        for (int i = 0;
+             i < importantInfo.length;
+             i++) {
+            //Pause for 2 seconds
+            Thread.sleep(2000);
+            //Print a message
+            System.out.println(importantInfo[i]);
+        }
+    }
+}
 
 
 	/*
