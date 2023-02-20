@@ -5,17 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Set;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
 	/*
@@ -84,6 +75,17 @@ public class Util {
 	}
 
 	/*
+	 * HomeWork2-7
+	 * 
+	 * @Author: claire zhang
+	 */
+	public static void clickAlertandAccept(WebDriver driver, By targetLocation) {
+
+		driver.findElement(targetLocation).click();
+		driver.switchTo().alert().accept();
+	}
+
+	/*
 	 * Switches the driver focus to the next available window
 	 * 
 	 * @Author: Erlyn Gammad
@@ -114,5 +116,6 @@ public class Util {
 		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
+>>>>>>> master
 	}
 }
