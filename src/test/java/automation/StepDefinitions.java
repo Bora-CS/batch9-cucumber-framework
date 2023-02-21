@@ -1,21 +1,56 @@
 package automation;
 
-import io.cucumber.java.en.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions.*;
+import java.time.Duration;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.cucumber.java.en.*;
+import utilities.DriverManager;
+import utilities.Util;
 
 public class StepDefinitions {
 
-    @Given("an example scenario")
-    public void anExampleScenario() {
-    }
+	private WebDriver driver;
 
-    @When("all step definitions are implemented")
-    public void allStepDefinitionsAreImplemented() {
-    }
+	@Then("user is on the boratech practice site homepage")
+	public void navigateToHomePage() throws Exception {
+		System.setProperty("webdriver.chrome.driver", DriverManager.getDriverPath());
+		driver = new ChromeDriver();
+		driver.get("https://boratech-practice-app.onrender.com/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	}
 
-    @Then("the scenario passes")
-    public void theScenarioPasses() {
-    }
+	@When("user navigates to the login page")
+	public void navigateToLoginPage() {
+		driver.findElement(By.xpath("//*[contains(text(), 'Login')]")).click();
+	}
+
+	@When("user enters username - {string} and password - {string}")
+	public void enterCredentials(String username, String password) {
+		driver.findElement(By.xpath("//input[@name='email']")).sendKeys(username);
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password);
+	}
+
+	@When("user clicks on the login button")
+	public void clickLogin() {
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
+	}
+
+	@Then("user should be on the dashboard page")
+	public void validateDashboard() {
+		Util.wait(3);
+		String expectedUrl = "https://boratech-practice-app.onrender.com/dashboard";
+		String actualUrl = driver.getCurrentUrl();
+		assertEquals(expectedUrl, actualUrl);
+		String expectedTitleText = "Dashboard";
+		String actualTitleText = driver.findElement(By.xpath("//h1[@class='large text-primary']")).getText();
+		assertEquals(expectedTitleText, actualTitleText);
+		driver.quit();
+	}
 
 }
