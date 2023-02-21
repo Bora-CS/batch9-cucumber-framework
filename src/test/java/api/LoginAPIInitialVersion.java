@@ -25,8 +25,8 @@ public class LoginAPIInitialVersion {
 
 		// Request body as Map
 //		Map<String, String> body = new HashMap<>();
-//		body.put("email", "muradil.erkin@boratechschool.com");
-//		body.put("password", "Boratech");
+//		body.put("email", "shaoling.stouder@gmail.com");
+//		body.put("password", "591159slS@");
 
 		// Request body as JsonObject
 //		JsonObject body = new JsonObject();
