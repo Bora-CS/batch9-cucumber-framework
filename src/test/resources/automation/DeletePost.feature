@@ -7,6 +7,6 @@ Feature: Delete Post
     And user clicks on the login button
     Then user should be on the dashboard page
     When user navigates to the posts page
-    And find the post you want to delete
+    And delete the post according to post content
       | content | delete this one |
     Then verify user delete the post successfully

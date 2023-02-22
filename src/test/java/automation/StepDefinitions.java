@@ -74,7 +74,7 @@ public class StepDefinitions {
 		driver.findElement(By.xpath("//a[@href='/posts']")).click();
 	}
 
-	@When("find the post you want to delete")
+	@When("delete the post according to post content")
 	public void deletePost(DataTable dataTable) {
 		Map<String, String> data = dataTable.asMap();
 		target = data.get("content");
