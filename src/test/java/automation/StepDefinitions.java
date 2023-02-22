@@ -96,10 +96,9 @@ public class StepDefinitions {
 
 	@Then("user delete the post")
 	public void deletePost() {
-		//locate the delet button of the post with the accurate content
+		// locate the delet button of the post with the accurate content
 		driver.findElement(By.xpath("//div[p/text()='" + postContent + "!']/button[@class='btn btn-danger']")).click();
-	
-		
+
 	}
 
 	@Then("post should be deleted")
