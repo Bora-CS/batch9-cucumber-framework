@@ -3,12 +3,14 @@ package automation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.datatable.DataTable;
@@ -91,26 +93,23 @@ public class StepDefinitions {
 			assertTrue(false, "There was no post found with the content - " + postContent);
 		}
 	}
-	
-	
+
 	@Then("user delete the post")
 	public void deletePost() {
-	    driver.findElement(By.xpath("//button[@class='btn btn-danger']")).click();
+		//locate the delet button of the post with the accurate content
+		driver.findElement(By.xpath("//div[p/text()='" + postContent + "!']/button[@class='btn btn-danger']")).click();
+	
+		
 	}
 
 	@Then("post should be deleted")
-	public void post_should_be_deleted() {
-	   try {
-		   driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
-		   assertTrue(true, "Test Failed");
-	   } catch(NoSuchElementException e) {
-		   assertTrue(true);
-	   }
+	public void validateDelete() {
+		try {
+			driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
+			assertTrue(true, "Content was not deleted successfully. Test failed.");
+		} catch (NoSuchElementException e) {
+			assertTrue(true);
+		}
 	}
-	
-	
-	
-	
-	
 
 }
