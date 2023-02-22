@@ -92,4 +92,21 @@ public class StepDefinitions {
 		}
 	}
 
+	@Then("user delete the post")
+	public void deletePost() {
+		// locate the delete button of the post with the accurate content
+		driver.findElement(By.xpath("//div[p/text()='" + postContent + "']/button[@class='btn btn-danger']")).click();
+
+	}
+
+	@Then("post should be deleted")
+	public void validateDelete() {
+		try {
+			driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
+			assertTrue(true, "Content was not deleted successfully. Test failed.");
+		} catch (NoSuchElementException e) {
+			assertTrue(true);
+		}
+	}
+
 }

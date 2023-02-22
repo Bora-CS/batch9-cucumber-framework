@@ -10,3 +10,5 @@ Feature: Post
     And user enters some post content and clicks on submit
       | content | Go Girl! |
     Then the newly created post should be on the page
+    And user delete the post
+    Then post should be deleted
