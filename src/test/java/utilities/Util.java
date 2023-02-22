@@ -23,7 +23,7 @@ public class Util {
 	* make time delay
 	* @ @Author: Addie
 	*/
-	public class SleepMessages {
+	public static class SleepMessages {
     public static void main(String args[])
         throws InterruptedException {
         String importantInfo[] = {
