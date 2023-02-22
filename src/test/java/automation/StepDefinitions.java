@@ -3,14 +3,12 @@ package automation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.datatable.DataTable;
@@ -96,8 +94,8 @@ public class StepDefinitions {
 
 	@Then("user delete the post")
 	public void deletePost() {
-		// locate the delet button of the post with the accurate content
-		driver.findElement(By.xpath("//div[p/text()='" + postContent + "!']/button[@class='btn btn-danger']")).click();
+		// locate the delete button of the post with the accurate content
+		driver.findElement(By.xpath("//div[p/text()='" + postContent + "']/button[@class='btn btn-danger']")).click();
 
 	}
 
