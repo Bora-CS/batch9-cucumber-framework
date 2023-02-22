@@ -78,6 +78,12 @@ public class StepDefinitions {
 	public void deletePost(DataTable dataTable) {
 		Map<String, String> data = dataTable.asMap();
 		target = data.get("content");
+		
+		//solution 1
+		driver.findElement(By.xpath("//p[text()='"+target+"']/following-sibling::button[3]")).click();
+		
+		//solution 2
+		/*
 		List<WebElement> posts = driver.findElements(By.xpath("//div[@class='posts']/div"));
 		for (int index = 1; index <= posts.size(); index++) {
 			String wholePostXpath = "//div[@class='posts']/div[" + index + "]";
@@ -89,6 +95,7 @@ public class StepDefinitions {
 				break;
 			}
 		}
+		*/
 	}
 
 	@Then("verify user delete the post successfully")

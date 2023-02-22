@@ -8,5 +8,5 @@ Feature: Delete Post
     Then user should be on the dashboard page
     When user navigates to the posts page
     And delete the post according to post content
-      | content | delete this one |
+      | content | This is test-6 |
     Then verify user delete the post successfully
