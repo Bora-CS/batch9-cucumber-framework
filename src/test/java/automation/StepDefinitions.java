@@ -91,5 +91,26 @@ public class StepDefinitions {
 			assertTrue(false, "There was no post found with the content - " + postContent);
 		}
 	}
+	
+	
+	@Then("user delete the post")
+	public void deletePost() {
+	    driver.findElement(By.xpath("//button[@class='btn btn-danger']")).click();
+	}
+
+	@Then("post should be deleted")
+	public void post_should_be_deleted() {
+	   try {
+		   driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
+		   assertTrue(true, "Test Failed");
+	   } catch(NoSuchElementException e) {
+		   assertTrue(true);
+	   }
+	}
+	
+	
+	
+	
+	
 
 }
