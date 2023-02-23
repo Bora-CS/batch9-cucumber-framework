@@ -1,5 +1,8 @@
 package automation;
 
+import java.util.Iterator;
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,16 +15,10 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		try {
-			System.setProperty("webdriver.chrome.driver", DriverManager.getDriverPath());
-			driver = new ChromeDriver();
-			driver.get("https://boratech-practice-app.onrender.com/");
-			driver.findElement(By.xpath("//*[contains(text(), 'Login')]")).click();
-			Thread.sleep(3000);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			driver.quit();
+		Random random = new Random();
+		for (int i = 0; i < 100; i++) {
+			int sixDigit = random.nextInt(999999 + 1 - 100000) + 100000;
+			System.out.println(sixDigit);
 		}
 
 	}
