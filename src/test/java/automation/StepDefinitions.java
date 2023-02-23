@@ -78,33 +78,38 @@ public class StepDefinitions {
 	public void deletePost(DataTable dataTable) {
 		Map<String, String> data = dataTable.asMap();
 		target = data.get("content");
-		
-		//solution 1
-		driver.findElement(By.xpath("//p[text()='"+target+"']/following-sibling::button[3]")).click();
-		
-		//solution 2
-		/*
-		List<WebElement> posts = driver.findElements(By.xpath("//div[@class='posts']/div"));
-		for (int index = 1; index <= posts.size(); index++) {
-			String wholePostXpath = "//div[@class='posts']/div[" + index + "]";
-			String messageXpath = wholePostXpath + "//p[1]";
-			String deleteXpath = wholePostXpath + "//button[3]";
-			String deleteMessage = driver.findElement(By.xpath(messageXpath)).getText();
-			if (deleteMessage.equals(target)) {
-				driver.findElement(By.xpath(deleteXpath)).click();
-				break;
-			}
-		}
-		*/
+
+		// solution 1
+		driver.findElement(By.xpath("//p[text()='" + target + "']/following-sibling::button[3]")).click();
+
+		// solution 2
+//		List<WebElement> posts = driver.findElements(By.xpath("//div[@class='posts']/div"));
+//		for (int index = 1; index <= posts.size(); index++) {
+//			String wholePostXpath = "//div[@class='posts']/div[" + index + "]";
+//			String messageXpath = wholePostXpath + "//p[1]";
+//			String deleteXpath = wholePostXpath + "//button[3]";
+//			String deleteMessage = driver.findElement(By.xpath(messageXpath)).getText();
+//			if (deleteMessage.equals(target)) {
+//				driver.findElement(By.xpath(deleteXpath)).click();
+//				break;
+//			}
+//		}
 	}
 
 	@Then("verify user delete the post successfully")
 	public void validation() {
 		Util.wait(3);
-		List<WebElement> postMessage = driver.findElements(By.xpath("//div[@class='posts']//p[1]"));
-		for(WebElement m : postMessage) {
-			assertFalse(m.getText().contains(target));
+		// #1 solution
+		try {
+			driver.findElement(By.xpath("//p[text()='" + target + "']"));
+			assertTrue(false, "the content - " + target+" is not deleted successful");
+		} catch (NoSuchElementException e) {
+			assertTrue(true);
 		}
+		// #2 solution
+//		List<WebElement> postMessage = driver.findElements(By.xpath("//div[@class='posts']//p[1]"));
+//		for(WebElement m : postMessage) {
+//			assertFalse(m.getText().equals(target));
+//		}
 	}
-
 }
