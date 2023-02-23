@@ -3,12 +3,14 @@ package automation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.datatable.DataTable;
@@ -21,7 +23,7 @@ import utilities.Util;
 public class StepDefinitions {
 
 	private WebDriver driver;
-	private String postContent;
+	private String target;
 
 	@Before
 	public void setUp() throws Exception {
@@ -72,24 +74,42 @@ public class StepDefinitions {
 		driver.findElement(By.xpath("//a[@href='/posts']")).click();
 	}
 
-	@When("user enters some post content and clicks on submit")
-	public void createPost(DataTable dataTable) {
+	@When("delete the post according to post content")
+	public void deletePost(DataTable dataTable) {
 		Map<String, String> data = dataTable.asMap();
-		Random random = new Random();
-		int sixDigit = random.nextInt(999999 + 1 - 100000) + 100000;
-		postContent = data.get("content") + " - " + sixDigit;
-		driver.findElement(By.tagName("textarea")).sendKeys(postContent);
-		driver.findElement(By.tagName("input")).click();
+		target = data.get("content");
+
+		// solution 1
+		driver.findElement(By.xpath("//p[text()='" + target + "']/following-sibling::button[3]")).click();
+
+		// solution 2
+//		List<WebElement> posts = driver.findElements(By.xpath("//div[@class='posts']/div"));
+//		for (int index = 1; index <= posts.size(); index++) {
+//			String wholePostXpath = "//div[@class='posts']/div[" + index + "]";
+//			String messageXpath = wholePostXpath + "//p[1]";
+//			String deleteXpath = wholePostXpath + "//button[3]";
+//			String deleteMessage = driver.findElement(By.xpath(messageXpath)).getText();
+//			if (deleteMessage.equals(target)) {
+//				driver.findElement(By.xpath(deleteXpath)).click();
+//				break;
+//			}
+//		}
 	}
 
-	@Then("the newly created post should be on the page")
-	public void validatePost() {
+	@Then("verify user delete the post successfully")
+	public void validation() {
+		Util.wait(3);
+		// #1 solution
 		try {
-			driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
-			assertTrue(true);
+			driver.findElement(By.xpath("//p[text()='" + target + "']"));
+			assertTrue(false, "the content - " + target+" is not deleted successful");
 		} catch (NoSuchElementException e) {
-			assertTrue(false, "There was no post found with the content - " + postContent);
+			assertTrue(true);
 		}
+		// #2 solution
+//		List<WebElement> postMessage = driver.findElements(By.xpath("//div[@class='posts']//p[1]"));
+//		for(WebElement m : postMessage) {
+//			assertFalse(m.getText().equals(target));
+//		}
 	}
-
 }
