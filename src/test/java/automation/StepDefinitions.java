@@ -90,6 +90,21 @@ public class StepDefinitions {
 		} catch (NoSuchElementException e) {
 			assertTrue(false, "There was no post found with the content - " + postContent);
 		}
+		
+	}
+	@Then("the post content newly entered will be deleted")
+	public void the_post_content_newly_entered_will_be_deleted() {
+		driver.findElement(By.xpath("//div[p/text()='"+postContent+"']//button[@class='btn btn-danger']")).click();;
+	    
 	}
 
+	@Then("make sure the post is deleted")
+	public void make_sure_the_post_is_deleted() {
+	   try { 
+		   driver.findElement(By.xpath("//p[text()='You are awesome!']"));
+		   assertTrue(false, "the Post is still there, test failed");
+	   } catch (NoSuchElementException e) {
+		   assertTrue(true, "post is successfully deleted" );
+	   }
+	}
 }
