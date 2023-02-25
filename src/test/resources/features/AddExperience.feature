@@ -1,4 +1,4 @@
-Feature: Add Education
+Feature: Add Experience
 
   Scenario: Happy Path
     Given user is logged in
