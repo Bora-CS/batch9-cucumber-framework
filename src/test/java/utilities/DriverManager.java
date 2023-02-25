@@ -2,6 +2,7 @@ package utilities;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public class DriverManager {
 	private static final String DRIVER_WINDOWS = "src/test/resources/drivers/chromedriver_windows.exe";
 
 	private static WebDriver driver;
+	private static String customSessionId;
 
 	private DriverManager() {
 	};
@@ -23,11 +25,19 @@ public class DriverManager {
 			if (driver == null) {
 				System.setProperty("webdriver.chrome.driver", getDriverPath());
 				driver = new ChromeDriver();
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 			}
 		} catch (Exception e) {
 			assertTrue(false, e.getMessage());
 		}
 		return driver;
+	}
+
+	public static String getSessionId() {
+		if (customSessionId == null) {
+			customSessionId = Util.get6DigitCode() + "";
+		}
+		return customSessionId;
 	}
 
 	public static void tearDown() {

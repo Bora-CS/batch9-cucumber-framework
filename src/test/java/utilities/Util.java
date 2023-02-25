@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.Random;
 import java.util.Set;
 import org.openqa.selenium.WebDriver;
 
@@ -114,5 +116,16 @@ public class Util {
 		driver.get(website);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
+	}
+
+	/*
+	 * Generates a 6 digit numeric code
+	 * 
+	 * @Author: Muradil Erkin
+	 */
+	public static int get6DigitCode() {
+		Random random = new Random();
+		int sixDigit = random.nextInt(999999 + 1 - 100000) + 100000;
+		return sixDigit;
 	}
 }
