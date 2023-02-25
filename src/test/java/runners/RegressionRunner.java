@@ -1,4 +1,4 @@
-package automation;
+package runners;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
@@ -10,8 +10,8 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("automation")
+@SelectClasspathResource("features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/html-report/index.html")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "automation")
-public class RunCucumberTest {
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "uiStepDefinitions, hooks")
+public class RegressionRunner {
 }

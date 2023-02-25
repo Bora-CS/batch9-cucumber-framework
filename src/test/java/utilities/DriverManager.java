@@ -1,18 +1,43 @@
 package utilities;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverManager {
 
-	public static final String DRIVER_MAC = "src/test/resources/drivers/chromedriver_mac";
-	public static final String DRIVER_MAC_M1 = "src/test/resources/drivers/chromedriver_mac_m1";
-	public static final String DRIVER_WINDOWS = "src/test/resources/drivers/chromedriver_windows.exe";
+	private static final String DRIVER_MAC = "src/test/resources/drivers/chromedriver_mac";
+	private static final String DRIVER_MAC_M1 = "src/test/resources/drivers/chromedriver_mac_m1";
+	private static final String DRIVER_WINDOWS = "src/test/resources/drivers/chromedriver_windows.exe";
 
-	public static WebDriver driver;
+	private static WebDriver driver;
 
-	public static String getDriverPath() throws Exception {
+	private DriverManager() {
+	};
+
+	public static WebDriver getInstance() {
+		try {
+			if (driver == null) {
+				System.setProperty("webdriver.chrome.driver", getDriverPath());
+				driver = new ChromeDriver();
+			}
+		} catch (Exception e) {
+			assertTrue(false, e.getMessage());
+		}
+		return driver;
+	}
+
+	public static void tearDown() {
+		if (driver != null) {
+			driver.quit();
+			driver = null;
+		}
+	}
+
+	private static String getDriverPath() throws Exception {
 		Properties sProps = System.getProperties();
 		String os = sProps.getProperty("os.name").toLowerCase();
 		String archType = sProps.getProperty("os.arch").toLowerCase();
