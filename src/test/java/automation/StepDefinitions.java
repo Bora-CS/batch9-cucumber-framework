@@ -91,5 +91,21 @@ public class StepDefinitions {
 			assertTrue(false, "There was no post found with the content - " + postContent);
 		}
 	}
+	@Then("user clicks on the delet button")
+	   public void DeletButton() {
+	         driver.findElement(By.xpath("//button[@class=\"btn btn-danger\"]")).click();
+	   }
 
-}
+	@Then("user newly created")
+	   public void NewlyCreated() {
+	      try {
+	         driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
+	         assertTrue(false);
+	      } catch (NoSuchElementException e) {
+	         assertTrue(true, "There was no post found with the content - " + postContent);
+	      }
+	         
+	   }
+
+	}
+
