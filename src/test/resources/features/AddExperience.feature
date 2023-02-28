@@ -3,8 +3,8 @@ Feature: Add Experience
 
   Scenario: Happy Path
     Given user is logged in
-      | username | muradil.erkin@boratechschool.com |
-      | password | Boratech                         |
+      | username | wenji.zou.z@gmail.com |
+      | password |                123456 |
     When user clicks on the add experience button
     And user enters experience info and submits
       | jobTitle    | Paw Patrol     |
@@ -19,8 +19,8 @@ Feature: Add Experience
 
   Scenario Outline: Unhappy path
     Given user is logged in
-      | username | muradil.erkin@boratechschool.com |
-      | password | Boratech                         |
+      | username | wenji.zou.z@gmail.com |
+      | password |                123456 |
     When user clicks on the add experience button
     And user enters experience info and submits
       | jobTitle    | <jobTitle>    |
