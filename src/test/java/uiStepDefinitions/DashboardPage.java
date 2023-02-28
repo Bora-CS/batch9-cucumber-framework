@@ -59,4 +59,21 @@ public class DashboardPage {
 		assertTrue(found, "Company with the name [" + expectedCompanyName + "] is not found.");
 	}
 
+	@Then("the education with the given school name should be displayed")
+	public void findEducationBySchoolName(DataTable dataTable) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='Dashboard']")));
+		String expectedSchoolName = dataTable.asMap().get("school") + "-" + DriverManager.getSessionId();
+		List<WebElement> schoolCells = driver
+				.findElements(By.xpath("//h2[text()='Education Credentials']/following-sibling::table//td[1]"));
+		boolean found = false;
+		for (WebElement schoolCell : schoolCells) {
+			String actualSchoolName = schoolCell.getText();
+			if (actualSchoolName.equals(expectedSchoolName)) {
+				found = true;
+				break;
+			}
+		}
+		assertTrue(found, "Company with the name [" + expectedSchoolName + "] is not found.");
+	}
 }
