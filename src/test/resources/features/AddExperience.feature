@@ -3,8 +3,8 @@ Feature: Add Experience
 
   Scenario: Happy Path
     Given user is logged in
-      | username | muradil.erkin@boratechschool.com |
-      | password | Boratech                         |
+      | username | joycechen@test.com |
+      | password |             123456 |
     When user clicks on the add experience button
     And user enters experience info and submits
       | jobTitle    | Paw Patrol     |
@@ -19,8 +19,8 @@ Feature: Add Experience
 
   Scenario Outline: Unhappy path
     Given user is logged in
-      | username | muradil.erkin@boratechschool.com |
-      | password | Boratech                         |
+      | username | joycechen@test.com |
+      | password |             123456 |
     When user clicks on the add experience button
     And user enters experience info and submits
       | jobTitle    | <jobTitle>    |
@@ -34,7 +34,11 @@ Feature: Add Experience
       | error | <error> |
 
     Examples: 
-      | jobTitle   | company        | location   | fromDate | current | toDate   | description | error                 |
-      |            | Disney Plus CA | California | 09012008 | false   | 06012012 | Awesome     | Title is required     |
-      | Paw Patrol |                | California | 09012008 | false   | 06012012 | Awesome     | Murad is required     |
-      | Paw Patrol | Disney Plus CA | California |          | false   | 06012012 | Awesome     | From date is required |
+      | jobTitle   | company        | location   | fromDate | current | toDate   | description | error                                                       |
+      |            | Disney Plus CA | California | 09012008 | false   | 06012012 | Awesome     | Title is required                                           |
+      | Paw Patrol |                | California | 09012008 | false   | 06012012 | Awesome     | Company is required                                         |
+      | Paw Patrol | Disney Plus CA | California |          | false   | 06012012 | Awesome     | From date is required                                       |
+      |            |                | California | 09012008 | false   | 06012012 | Awesome     | Title is required,Company is required                       |
+      |            | Disney Plus CA | California |          | false   | 06012012 | Awesome     | Title is required,From date is required                     |
+      | Paw Patrol |                | California |          | false   | 06012012 | Awesome     | Company is required,From date is required                   |
+      |            |                | California |          | false   | 06012012 | Awesome     | Title is required,Company is required,From date is required |

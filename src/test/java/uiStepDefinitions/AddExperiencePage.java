@@ -1,7 +1,10 @@
 package uiStepDefinitions;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -12,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import utilities.DriverManager;
-import utilities.Util;
 
 public class AddExperiencePage {
 
@@ -35,17 +37,32 @@ public class AddExperiencePage {
 				.sendKeys(data.get("description") == null ? "" : data.get("description"));
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 	}
-
+	
 	@Then("user should see error message\\(s)")
 	public void validateErrorMessage(DataTable dataTable) {
 		String expectedErrorMessage = dataTable.asMap().get("error");
-		try {
-			WebElement errorElement = driver.findElement(By.xpath("//*[@class='alert alert-danger']"));
-			String actualErrorMessage = errorElement.getText();
-			assertEquals(expectedErrorMessage, actualErrorMessage);
-		} catch (NoSuchElementException e) {
-			assertTrue(false, "Error alert did not display.");
+		if (!expectedErrorMessage.contains(",")) {
+			try {
+				WebElement errorElement = driver.findElement(By.xpath("//*[@class='alert alert-danger']"));
+				String actualErrorMessage = errorElement.getText();
+				assertEquals(expectedErrorMessage, actualErrorMessage);
+			} catch (NoSuchElementException e) {
+				assertTrue(false, "Error alert did not display.");
+			}
+		} else {
+			try {
+				String[] message = expectedErrorMessage.split(",");
+				List<WebElement> actualMessage = driver.findElements(By.xpath("//*[@class='alert alert-danger']"));
+				for (int index = 0; index < actualMessage.size(); index++) {
+					assertEquals(message[index], actualMessage.get(index).getText());
+				}
+			} catch (NoSuchElementException e) {
+				assertTrue(false, "Error alert did not display.");
+
+			}
+
 		}
 	}
+
 
 }
