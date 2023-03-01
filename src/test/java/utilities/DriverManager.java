@@ -45,6 +45,9 @@ public class DriverManager {
 			driver.quit();
 			driver = null;
 		}
+		if (customSessionId != null) {
+			customSessionId = null;
+		}
 	}
 
 	private static String getDriverPath() throws Exception {

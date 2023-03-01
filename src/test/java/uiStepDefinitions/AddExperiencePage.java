@@ -2,6 +2,9 @@ package uiStepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -38,11 +41,39 @@ public class AddExperiencePage {
 
 	@Then("user should see error message\\(s)")
 	public void validateErrorMessage(DataTable dataTable) {
-		String expectedErrorMessage = dataTable.asMap().get("error");
+		ArrayList<String> expectedErrors = new ArrayList<>();
+		ArrayList<String> actualErrors = new ArrayList<>();
+
+		String combinedErrorMessage = dataTable.asMap().get("error");
+		String[] expectedErrorMessages = combinedErrorMessage.split(",");
+		for (String message : expectedErrorMessages) {
+			expectedErrors.add(message.trim());
+		}
+
 		try {
-			WebElement errorElement = driver.findElement(By.xpath("//*[@class='alert alert-danger']"));
-			String actualErrorMessage = errorElement.getText();
-			assertEquals(expectedErrorMessage, actualErrorMessage);
+			List<WebElement> errorElements = driver.findElements(By.xpath("//*[@class='alert alert-danger']"));
+			for (WebElement errorElement : errorElements) {
+				actualErrors.add(errorElement.getText().trim());
+			}
+
+			System.out.println("Expected Errors: " + expectedErrors);
+			System.out.println("Actual Errors: " + actualErrors);
+
+			Collections.sort(expectedErrors);
+			Collections.sort(actualErrors);
+
+			int expectedNumberOfErrors = expectedErrors.size();
+			int actualNumberOfErrors = actualErrors.size();
+
+			assertEquals(expectedNumberOfErrors, actualNumberOfErrors, "Number of errors does not match");
+
+			for (int i = 0; i < expectedNumberOfErrors; i++) {
+				String expected = expectedErrors.get(i);
+				String actual = actualErrors.get(i);
+
+				assertEquals(expected, actual);
+			}
+
 		} catch (NoSuchElementException e) {
 			assertTrue(false, "Error alert did not display.");
 		}
