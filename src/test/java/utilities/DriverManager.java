@@ -51,6 +51,9 @@ public class DriverManager {
 		Properties sProps = System.getProperties();
 		String os = sProps.getProperty("os.name").toLowerCase();
 		String archType = sProps.getProperty("os.arch").toLowerCase();
+		
+		System.out.println(os);
+		System.out.println(archType);
 
 		if (os.startsWith("mac")) {
 			if (archType.startsWith("aarch64")) {
