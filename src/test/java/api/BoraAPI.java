@@ -1,5 +1,7 @@
 package api;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 
 import io.restassured.RestAssured;
@@ -23,9 +25,7 @@ public class BoraAPI {
 		Response response = request.post(endpoint);
 		int actualStatusCode = response.statusCode();
 
-		if (actualStatusCode != StatusCodes.OK.value()) {
-			System.out.println("Login Failed");
-		}
+		assertEquals(StatusCodes.OK.value(), actualStatusCode);
 
 		LogInResponseBody loginResponseBody = response.as(LogInResponseBody.class);
 
@@ -46,6 +46,9 @@ public class BoraAPI {
 		request.body(body);
 
 		Response response = request.post(endpoint);
+
+		assertEquals(StatusCodes.OK.value(), response.statusCode());
+
 		Post post = response.as(Post.class);
 		return post;
 
