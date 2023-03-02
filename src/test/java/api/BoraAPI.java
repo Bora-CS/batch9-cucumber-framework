@@ -13,7 +13,15 @@ import utilities.StatusCodes;
 public class BoraAPI {
 
 	public static String login(String email, String password) {
+		Response response = loginNoValidation(email, password);
+		int actualStatusCode = response.statusCode();
+		assertEquals(StatusCodes.OK.value(), actualStatusCode);
 
+		LogInResponseBody loginResponseBody = response.as(LogInResponseBody.class);
+		return loginResponseBody.getToken();
+	}
+
+	public static Response loginNoValidation(String email, String password) {
 		String endpoint = "/api/auth";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
@@ -23,14 +31,7 @@ public class BoraAPI {
 		request.body(body);
 
 		Response response = request.post(endpoint);
-		int actualStatusCode = response.statusCode();
-
-		assertEquals(StatusCodes.OK.value(), actualStatusCode);
-
-		LogInResponseBody loginResponseBody = response.as(LogInResponseBody.class);
-
-		return loginResponseBody.getToken();
-
+		return response;
 	}
 
 	public static Post createPost(String token, String content) {
