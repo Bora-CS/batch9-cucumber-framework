@@ -83,7 +83,13 @@ public class BoraAPI {
 	}
 
 	public static UpdatedProfile addExperience(String token, Experience data) {
+		Response response = addExperienceNoValidation(token, data);
+		UpdatedProfile updatedProfile = response.as(UpdatedProfile.class);
+		return updatedProfile;
 
+	}
+
+	public static Response addExperienceNoValidation(String token, Experience data) {
 		String endpoint = "/api/profile/experience";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
@@ -94,9 +100,7 @@ public class BoraAPI {
 		request.body(data);
 
 		Response response = request.put(endpoint);
-		UpdatedProfile updatedProfile = response.as(UpdatedProfile.class);
-		return updatedProfile;
-
+		return response;
 	}
 
 	public static UpdatedProfile addEducation(String token, Education data) {
