@@ -20,6 +20,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Util {
+
+	/*
+	* make time delay
+	* @ @Author: Addie
+	*/
+	public static class SleepMessages {
+    public static void main(String args[])
+        throws InterruptedException {
+        String importantInfo[] = {
+            "Kate eat oats",
+            "Does eat oats",
+        };
+
+        for (int i = 0;
+             i < importantInfo.length;
+             i++) {
+            //Pause for 2 seconds
+            Thread.sleep(2000);
+            //Print a message
+            System.out.println(importantInfo[i]);
+        }
+    }
+}
+
+
 	/*
 	 * Selecting Drop Down List by invisible text
 	 * 
