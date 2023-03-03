@@ -11,7 +11,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/html-report/index.html")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "apiStepDefinitions, uiStepDefinitions, hooks")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "dataTransform, apiStepDefinitions, uiStepDefinitions, hooks")
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@Login and @API and @Unhappy")
 @ConfigurationParameter(key = SNIPPET_TYPE_PROPERTY_NAME, value = "camelcase")
 @ConfigurationParameter(key = EXECUTION_DRY_RUN_PROPERTY_NAME, value = "false")

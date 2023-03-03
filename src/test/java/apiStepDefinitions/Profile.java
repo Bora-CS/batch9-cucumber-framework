@@ -8,6 +8,7 @@ import api.BoraAPI;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
+import pojo.Education;
 import pojo.Experience;
 import utilities.DataManager;
 
@@ -21,6 +22,12 @@ public class Profile {
 		Experience experience = new Experience(data.get("company"), data.get("title"), data.get("location"),
 				data.get("from"), data.get("to"), Boolean.valueOf(data.get("current")), data.get("description"));
 		Response response = BoraAPI.addExperienceNoValidation(dataManager.getToken(), experience);
+		dataManager.setResponse(response);
+	}
+
+	@When("[API] user tries to add an education")
+	public void api_user_tries_to_add_an_education(Education education) {
+		Response response = BoraAPI.addEducationNoValidation(dataManager.getToken(), education);
 		dataManager.setResponse(response);
 	}
 
