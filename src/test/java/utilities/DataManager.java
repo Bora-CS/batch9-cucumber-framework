@@ -2,6 +2,8 @@ package utilities;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import io.restassured.response.Response;
+
 public class DataManager {
 
 	// Data Manager
@@ -25,6 +27,7 @@ public class DataManager {
 
 	// Data
 	private String token;
+	private Response response;
 
 	public String getToken() {
 		assertNotNull(token, "DataManager - Token is not available");
@@ -33,5 +36,14 @@ public class DataManager {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Response getResponse() {
+		assertNotNull(response, "DataManager - Response is not available");
+		return response;
+	}
+
+	public void setResponse(Response response) {
+		this.response = response;
 	}
 }

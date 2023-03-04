@@ -13,7 +13,15 @@ import utilities.StatusCodes;
 public class BoraAPI {
 
 	public static String login(String email, String password) {
+		Response response = loginNoValidation(email, password);
+		int actualStatusCode = response.statusCode();
+		assertEquals(StatusCodes.OK.value(), actualStatusCode);
 
+		LogInResponseBody loginResponseBody = response.as(LogInResponseBody.class);
+		return loginResponseBody.getToken();
+	}
+
+	public static Response loginNoValidation(String email, String password) {
 		String endpoint = "/api/auth";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
@@ -23,14 +31,7 @@ public class BoraAPI {
 		request.body(body);
 
 		Response response = request.post(endpoint);
-		int actualStatusCode = response.statusCode();
-
-		assertEquals(StatusCodes.OK.value(), actualStatusCode);
-
-		LogInResponseBody loginResponseBody = response.as(LogInResponseBody.class);
-
-		return loginResponseBody.getToken();
-
+		return response;
 	}
 
 	public static Post createPost(String token, String content) {
@@ -82,7 +83,13 @@ public class BoraAPI {
 	}
 
 	public static UpdatedProfile addExperience(String token, Experience data) {
+		Response response = addExperienceNoValidation(token, data);
+		UpdatedProfile updatedProfile = response.as(UpdatedProfile.class);
+		return updatedProfile;
 
+	}
+
+	public static Response addExperienceNoValidation(String token, Experience data) {
 		String endpoint = "/api/profile/experience";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
@@ -93,13 +100,17 @@ public class BoraAPI {
 		request.body(data);
 
 		Response response = request.put(endpoint);
+		return response;
+	}
+
+	public static UpdatedProfile addEducation(String token, Education data) {
+		Response response = addEducationNoValidation(token, data);
 		UpdatedProfile updatedProfile = response.as(UpdatedProfile.class);
 		return updatedProfile;
 
 	}
 
-	public static UpdatedProfile addEducation(String token, Education data) {
-
+	public static Response addEducationNoValidation(String token, Education data) {
 		String endpoint = "/api/profile/education";
 		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
 		RequestSpecification request = RestAssured.given();
@@ -110,9 +121,7 @@ public class BoraAPI {
 		request.body(data);
 
 		Response response = request.put(endpoint);
-		UpdatedProfile updatedProfile = response.as(UpdatedProfile.class);
-		return updatedProfile;
-
+		return response;
 	}
 
 	public static void deletePostById(String token, String postId) {
