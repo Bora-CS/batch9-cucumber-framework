@@ -9,21 +9,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.*;
+import pageObjects.LoginPage;
 import utilities.DriverManager;
 
-public class LoginPage {
+public class LoginPageSteps {
 
 	private WebDriver driver = DriverManager.getInstance();
+	private LoginPage loginPage = new LoginPage(driver);
 
 	@When("user enters username - {string} and password - {string}")
 	public void enterCredentials(String username, String password) {
-		driver.findElement(By.xpath("//input[@name='email']")).sendKeys(username);
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password);
+		loginPage.enterUserCredentials(username, password);
 	}
 
 	@When("user clicks on the login button")
 	public void clickLogin() {
-		driver.findElement(By.xpath("//input[@value='Login']")).click();
+		loginPage.clickOnLoginButton();
 	}
 
 	@Then("user should see an error alert with the message - {string}")
