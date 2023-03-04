@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import utilities.Util;
 
@@ -15,11 +19,13 @@ public class DashboardPage {
 	private static final String TITLE = "Dashboard";
 
 	// Elements
-	private By titleText = By.xpath("//h1[@class='large text-primary']");
+	@FindBy(how = How.XPATH, using = "//h1[@class='large text-primary']")
+	private WebElement titleText;
 
 	// Constructor
 	public DashboardPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	// Actions
@@ -28,7 +34,7 @@ public class DashboardPage {
 		String actualUrl = driver.getCurrentUrl();
 		assertEquals(URL, actualUrl);
 
-		String actualTitleText = driver.findElement(titleText).getText();
+		String actualTitleText = titleText.getText();
 		assertEquals(TITLE, actualTitleText);
 	}
 

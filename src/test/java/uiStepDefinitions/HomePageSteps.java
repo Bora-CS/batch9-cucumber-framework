@@ -1,31 +1,26 @@
 package uiStepDefinitions;
 
-import org.openqa.selenium.WebDriver;
-
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.HomePage;
-import pageObjects.Navbar;
-import utilities.DriverManager;
+
+import utilities.PageManager;
 
 public class HomePageSteps {
 
-	private WebDriver driver = DriverManager.getInstance();
-	private HomePage homePage = new HomePage(driver);
-	private Navbar navbar = new Navbar(driver);
+	private PageManager pages = PageManager.getInstance();
 
 	@Then("user is on the boratech practice site homepage")
 	public void navigateToHomePage() {
-		homePage.navigate();
+		pages.homePage().navigate();
 	}
 
 	@When("user navigates to the login page")
 	public void navigateToLoginPage() {
-		navbar.navigateToLoginPage();
+		pages.navbar().navigateToLoginPage();
 	}
 
 	@When("user navigates to the posts page")
 	public void navigateToPostsPage() {
-		navbar.navigateToPostPage();
+		pages.navbar().navigateToPostPage();
 	}
 }

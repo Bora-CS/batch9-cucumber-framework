@@ -13,18 +13,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
-import pageObjects.DashboardPage;
 import utilities.DriverManager;
-import utilities.Util;
+import utilities.PageManager;
 
 public class DashboardPageSteps {
 
 	private WebDriver driver = DriverManager.getInstance();
-	private DashboardPage dashboardPage = new DashboardPage(driver);
+	private PageManager pages = PageManager.getInstance();
 
 	@Then("user should be on the dashboard page")
 	public void validateDashboard() {
-		dashboardPage.validate();
+		pages.dashboardPage().validate();
 	}
 
 	@When("user clicks on the add experience button")

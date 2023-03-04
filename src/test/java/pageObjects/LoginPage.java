@@ -1,7 +1,10 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
@@ -10,13 +13,19 @@ public class LoginPage {
 	private static final String URL = "https://boratech-practice-app.onrender.com/login";
 
 	// Elements
-	private By emailField = By.xpath("//input[@name='email']");
-	private By passwordField = By.xpath("//input[@name='password']");
-	private By loginButton = By.xpath("//input[@value='Login']");
+	@FindBy(how = How.XPATH, using = "//input[@name='email']")
+	private WebElement emailField;
+
+	@FindBy(how = How.XPATH, using = "//input[@name='password']")
+	private WebElement passwordField;
+
+	@FindBy(how = How.XPATH, using = "//input[@value='Login']")
+	private WebElement loginButton;
 
 	// Constructor
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	// Actions
@@ -25,18 +34,18 @@ public class LoginPage {
 	}
 
 	public void login(String email, String password) {
-		driver.findElement(emailField).sendKeys(email);
-		driver.findElement(passwordField).sendKeys(password);
-		driver.findElement(loginButton).click();
+		emailField.sendKeys(email);
+		passwordField.sendKeys(password);
+		loginButton.click();
 	}
 
 	public void enterUserCredentials(String email, String password) {
-		driver.findElement(emailField).sendKeys(email);
-		driver.findElement(passwordField).sendKeys(password);
+		emailField.sendKeys(email);
+		passwordField.sendKeys(password);
 	}
 
 	public void clickOnLoginButton() {
-		driver.findElement(loginButton).click();
+		loginButton.click();
 	}
 
 }

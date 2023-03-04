@@ -9,22 +9,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.*;
-import pageObjects.LoginPage;
 import utilities.DriverManager;
+import utilities.PageManager;
 
 public class LoginPageSteps {
 
 	private WebDriver driver = DriverManager.getInstance();
-	private LoginPage loginPage = new LoginPage(driver);
+	private PageManager pages = PageManager.getInstance();
 
 	@When("user enters username - {string} and password - {string}")
 	public void enterCredentials(String username, String password) {
-		loginPage.enterUserCredentials(username, password);
+		pages.loginPage().enterUserCredentials(username, password);
 	}
 
 	@When("user clicks on the login button")
 	public void clickLogin() {
-		loginPage.clickOnLoginButton();
+		pages.loginPage().clickOnLoginButton();
 	}
 
 	@Then("user should see an error alert with the message - {string}")
