@@ -7,6 +7,7 @@ public class LoginPage {
 
 	// Local Variable
 	private WebDriver driver;
+	private static final String URL = "https://boratech-practice-app.onrender.com/login";
 
 	// Elements
 	private By emailField = By.xpath("//input[@name='email']");
@@ -19,6 +20,10 @@ public class LoginPage {
 	}
 
 	// Actions
+	public void navigate() {
+		driver.get(URL);
+	}
+
 	public void login(String email, String password) {
 		driver.findElement(emailField).sendKeys(email);
 		driver.findElement(passwordField).sendKeys(password);

@@ -10,7 +10,6 @@ public class HomePage {
 	private static final String URL = "https://boratech-practice-app.onrender.com/";
 
 	// Elements
-	private By loginLink = By.xpath("//a[text()='Login']");
 
 	// Constructor
 	public HomePage(WebDriver driver) {
@@ -20,10 +19,6 @@ public class HomePage {
 	// Actions
 	public void navigate() {
 		driver.get(URL);
-	}
-
-	public void navigateToLoginPage() {
-		driver.findElement(loginLink).click();
 	}
 
 }

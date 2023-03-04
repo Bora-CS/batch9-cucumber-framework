@@ -12,30 +12,26 @@ import org.openqa.selenium.WebDriver;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageObjects.PostPage;
 import utilities.DriverManager;
 import utilities.Util;
 
-public class PostPage {
+public class PostPageSteps {
 
 	private WebDriver driver = DriverManager.getInstance();
+	private PostPage postPage = new PostPage(driver);
 	private String postContent;
 
 	@When("user enters some post content and clicks on submit")
 	public void createPost(DataTable dataTable) {
 		Map<String, String> data = dataTable.asMap();
 		postContent = data.get("content") + " - " + Util.get6DigitCode();
-		driver.findElement(By.tagName("textarea")).sendKeys(postContent);
-		driver.findElement(By.tagName("input")).click();
+		postPage.createPost(postContent);
 	}
 
 	@Then("the newly created post should be on the page")
 	public void validatePost() {
-		try {
-			driver.findElement(By.xpath("//p[text()='" + postContent + "']"));
-			assertTrue(true);
-		} catch (NoSuchElementException e) {
-			assertTrue(false, "There was no post found with the content - " + postContent);
-		}
+		postPage.validatePostByNameAndContent("Muradil Erkin", postContent);
 	}
 
 }
