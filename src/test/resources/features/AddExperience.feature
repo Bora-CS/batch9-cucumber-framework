@@ -38,13 +38,8 @@ Feature: Add Experience
       | password | Boratech                         |
     When user clicks on the add experience button
     And user enters experience info and submits
-      | jobTitle    | Paw Patrol     |
-      | company     | Disney Plus CA |
-      | location    | California     |
-      | fromDate    |       09012008 |
-      | current     | false          |
-      | toDate      |       06012012 |
-      | description | Awesome        |
+      | title      | company        | location   | from     | to       | current | description |
+      | Paw Patrol | Disney Plus CA | California | 09012008 | 06012012 | false   | Awesome     |
     Then the experience with the given company name should be displayed
       | company | Disney Plus CA |
 
@@ -55,18 +50,13 @@ Feature: Add Experience
       | password | Boratech                         |
     When user clicks on the add experience button
     And user enters experience info and submits
-      | jobTitle    | <jobTitle>    |
-      | company     | <company>     |
-      | location    | <location>    |
-      | fromDate    | <fromDate>    |
-      | current     | <current>     |
-      | toDate      | <toDate>      |
-      | description | <description> |
+      | title   | company   | location   | from   | to   | current   | description   |
+      | <title> | <company> | <location> | <from> | <to> | <current> | <description> |
     Then user should see error message(s)
       | error | <error> |
 
     Examples: 
-      | jobTitle   | company        | location   | fromDate | current | toDate   | description | error                                                         |
+      | title      | company        | location   | from     | current | to       | description | error                                                         |
       |            | Disney Plus CA | California | 09012008 | false   | 06012012 | Awesome     | Title is required                                             |
       | Paw Patrol |                | California | 09012008 | false   | 06012012 | Awesome     | Company is required                                           |
       | Paw Patrol | Disney Plus CA | California |          | false   | 06012012 | Awesome     | From date is required                                         |

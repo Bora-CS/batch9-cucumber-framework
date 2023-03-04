@@ -14,6 +14,8 @@ public class PageManager {
 	private Navbar navbar;
 	private DashboardPage dashboardPage;
 	private PostPage postPage;
+	private CommonPage commonPage;
+	private AddExperiencePage addExperiencePage;
 
 	private PageManager(WebDriver driver) {
 		this.driver = driver;
@@ -65,6 +67,20 @@ public class PageManager {
 			postPage = new PostPage(driver);
 		}
 		return postPage;
+	}
+
+	public CommonPage commonPage() {
+		if (commonPage == null) {
+			commonPage = new CommonPage(driver);
+		}
+		return commonPage;
+	}
+
+	public AddExperiencePage addExperiencePage() {
+		if (addExperiencePage == null) {
+			addExperiencePage = new AddExperiencePage(driver);
+		}
+		return addExperiencePage;
 	}
 
 }

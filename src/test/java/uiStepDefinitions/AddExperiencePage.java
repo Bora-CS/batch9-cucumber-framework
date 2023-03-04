@@ -14,29 +14,19 @@ import org.openqa.selenium.WebElement;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
+import pojo.Experience;
 import utilities.DriverManager;
+import utilities.PageManager;
 import utilities.Util;
 
 public class AddExperiencePage {
 
 	private WebDriver driver = DriverManager.getInstance();
+	private PageManager pages = PageManager.getInstance();
 
 	@When("user enters experience info and submits")
-	public void enterExperienceDetails(DataTable dataTable) {
-		Map<String, String> data = dataTable.asMap();
-		driver.findElement(By.name("title")).sendKeys(data.get("jobTitle") == null ? "" : data.get("jobTitle"));
-		driver.findElement(By.name("company"))
-				.sendKeys(data.get("company") == null ? "" : data.get("company") + "-" + DriverManager.getSessionId());
-		driver.findElement(By.name("location")).sendKeys(data.get("location") == null ? "" : data.get("location"));
-		driver.findElement(By.name("from")).sendKeys(data.get("fromDate") == null ? "" : data.get("fromDate"));
-		if (data.get("current") != null && Boolean.valueOf(data.get("current"))) {
-			driver.findElement(By.name("current")).click();
-		} else {
-			driver.findElement(By.name("to")).sendKeys(data.get("toDate") == null ? "" : data.get("toDate"));
-		}
-		driver.findElement(By.xpath("//textarea[@name='description']"))
-				.sendKeys(data.get("description") == null ? "" : data.get("description"));
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
+	public void enterExperienceDetails(Experience experience) {
+		pages.addExperiencePage().addExperience(experience);
 	}
 
 	@Then("user should see error message\\(s)")
