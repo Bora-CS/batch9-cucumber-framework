@@ -34,6 +34,21 @@ public class BoraAPI {
 		return response;
 	}
 
+	public static User getCurrentUser(String token) {
+		String endpoint = "/api/auth";
+		RestAssured.baseURI = "https://boratech-practice-app.onrender.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("x-auth-token", token);
+
+		Response response = request.get(endpoint);
+		int actualStatusCode = response.statusCode();
+		assertEquals(StatusCodes.OK.value(), actualStatusCode);
+
+		User user = response.as(User.class);
+		return user;
+	}
+
 	public static Post createPost(String token, String content) {
 
 		String endpoint = "/api/posts";

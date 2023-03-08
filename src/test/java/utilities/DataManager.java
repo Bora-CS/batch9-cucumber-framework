@@ -3,6 +3,7 @@ package utilities;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import io.restassured.response.Response;
+import pojo.User;
 
 public class DataManager {
 
@@ -28,6 +29,8 @@ public class DataManager {
 	// Data
 	private String token;
 	private Response response;
+	private User user;
+	private String postContent;
 
 	public String getToken() {
 		assertNotNull(token, "DataManager - Token is not available");
@@ -45,5 +48,23 @@ public class DataManager {
 
 	public void setResponse(Response response) {
 		this.response = response;
+	}
+
+	public User getUser() {
+		assertNotNull(user, "DataManager - User is not available");
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getPostContent() {
+		assertNotNull(postContent, "DataManager - PostContent is not available");
+		return postContent;
+	}
+
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
 }

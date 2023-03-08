@@ -9,6 +9,7 @@ import api.BoraAPI;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
+import pojo.User;
 import utilities.DataManager;
 
 public class Common {
@@ -21,6 +22,17 @@ public class Common {
 		String token = BoraAPI.login(data.get("username"), data.get("password"));
 		assertNotNull(token);
 		dataManager.setToken(token);
+	}
+
+	@Given("[API] user is logged in and the user data is saved")
+	public void loginAndStoreUserData(DataTable dataTable) {
+		Map<String, String> data = dataTable.asMaps().get(0);
+		String token = BoraAPI.login(data.get("username"), data.get("password"));
+		assertNotNull(token);
+		dataManager.setToken(token);
+		User user = BoraAPI.getCurrentUser(token);
+		dataManager.setUser(user);
+		System.out.println("User: " + user.name + " - " + user._id);
 	}
 
 	@Then("[API] user should see a {int} status code")
