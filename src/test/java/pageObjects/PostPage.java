@@ -84,4 +84,35 @@ public class PostPage {
 		}
 	}
 
+	public void thumbsUpForGivenUser(String username, String content) {
+		String xpath = "(//*[text()='" + username + "']/../../..//*[text()='" + content
+				+ "']/following-sibling::button)[1]";
+
+		Util.buttonClickFunction(driver, By.xpath(xpath));
+
+	}
+
+	public String getThumbsUpNumberForGivenUser(String username, String content) {
+		String xpath = "(//*[text()='" + username + "']/../../..//*[text()='" + content
+				+ "']/following-sibling::button/span)[1]";
+		Util.wait(3);
+		return Util.getText(driver, By.xpath(xpath));
+	}
+
+	public void thumbsDownForGivenUser(String username, String content) {
+		String xpath = "(//*[text()='" + username + "']/../../..//*[text()='" + content
+				+ "']/following-sibling::button)[2]";
+		Util.wait(3);
+		Util.buttonClickFunction(driver, By.xpath(xpath));
+
+	}
+
+	public boolean verifyThumbsUpNumberForGivenUser(String username, String content) {
+		String xpath = "(//*[text()='" + username + "']/../../..//*[text()='" + content
+				+ "']/following-sibling::button/span)[2]";
+
+		return Util.verifyElementExist(driver, By.xpath(xpath));
+
+	}
+
 }

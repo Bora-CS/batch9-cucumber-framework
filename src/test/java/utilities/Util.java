@@ -1,23 +1,14 @@
 package utilities;
 
+import java.time.Duration;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import java.time.Duration;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.Random;
-import java.util.Set;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Util {
 	/*
@@ -40,6 +31,11 @@ public class Util {
 	public static void addText(WebDriver driver, By locator, String value) {
 		WebElement field = driver.findElement(locator);
 		field.sendKeys(value);
+	}
+	
+	
+	public static String getText(WebDriver driver, By locator) {
+		return driver.findElement(locator).getText();
 	}
 
 	/*
@@ -128,4 +124,14 @@ public class Util {
 		int sixDigit = random.nextInt(999999 + 1 - 100000) + 100000;
 		return sixDigit;
 	}
+	
+	
+	
+	/***Verify****/
+	
+	public static boolean verifyElementExist(WebDriver driver, By locator) {
+		List<WebElement> elems = driver.findElements(locator);
+		return elems.size()>0;
+	}
+	
 }
