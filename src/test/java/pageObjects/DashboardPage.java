@@ -38,6 +38,9 @@ public class DashboardPage {
 	@FindBy(how = How.XPATH, using = "//h2[text()='Experience Credentials']/following-sibling::table[1]//td[1]")
 	private List<WebElement> companyCells;
 
+	@FindBy(how = How.XPATH, using = "//*[text()='School']/../../..//tbody//tr/td[1]")
+	private List<WebElement> schoolCells;
+
 	// Constructor
 	public DashboardPage(WebDriver driver) {
 		this.driver = driver;
@@ -75,6 +78,25 @@ public class DashboardPage {
 			}
 		}
 		assertTrue(found, "Company with the name [" + expectedCompanyName + "] is not found.");
+	}
+
+	public boolean verifySchoolIsBeenAdded(String expectingName) {
+
+		for (WebElement school : schoolCells) {
+			String schoolName = school.getText();
+			if (expectingName.equals(schoolName)) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public void deleteGivenSchool(String name) {
+		String xpath = "//*[text()='" + name + "']/..//button";
+		Util.wait(2);
+		Util.buttonClickFunction(driver, By.xpath(xpath));
+		Util.wait(2);
 	}
 
 }

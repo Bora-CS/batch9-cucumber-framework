@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import utilities.Util;
 
@@ -29,14 +30,26 @@ public class PostPage {
 	// Constructor
 	public PostPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	// Actions
 	public void createPost(String content) {
 		contentField.sendKeys(content);
-		submitPostButton.click();
+		clickSubmitButton();
 		Util.wait(2);
 	}
+	
+	public void clickSubmitButton() {
+		Util.wait(3);
+		submitPostButton.click();
+	}
+	
+	public String getErrorMessage() {
+		Util.wait(2);
+		return contentField.getAttribute("validationMessage");
+	}
+	
 
 	public void validatePostByNameAndContent(String expectedUsername, String expectedPostContent) {
 		boolean found = false;

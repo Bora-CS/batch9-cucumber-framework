@@ -2,18 +2,13 @@ package uiStepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import dev.failsafe.internal.util.Assert;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utilities.DriverManager;
 import utilities.PageManager;
 
 public class TeamWorkUIStepDefinitions {
@@ -59,31 +54,38 @@ public class TeamWorkUIStepDefinitions {
 	@Then("user submit a post without content")
 	public void userSubmitAPostWithoutContent() {
 	   
-		throw new io.cucumber.java.PendingException();
+		pages.postPage().clickSubmitButton();
 	}
 	@Then("user should see a alert in the post page {string}")
-	public void userShouldSeeAAlertInThePostPage(String string) {
-	   
-		throw new io.cucumber.java.PendingException();
+	public void userShouldSeeAAlertInThePostPage(String expectingErrorMessage) {
+	   String actualErrorMessage = pages.postPage().getErrorMessage();
+		assertTrue(actualErrorMessage.equals(expectingErrorMessage), 
+				"The message is not match, the actual message display in the UI is: "+actualErrorMessage);
 	}
 	
 	/***team 3***/
 	@Then("user enter education info")
 	public void userEnterEducationInfo(DataTable dataTable) {
 	   
-		throw new io.cucumber.java.PendingException();
+		Map<String,String> datas = dataTable.asMaps().get(0);
+		
+		pages.addEducationPage().enterEducationInfo(datas);
+		
+		
+		
 	}
 	@Then("verify the education info is been added")
 	public void verifyTheEducationInfoIsBeenAdded(DataTable dataTable) {
-	   
+	 
+		String schoolName = dataTable.asMap().get("school");
+		boolean isFound = pages.dashboardPage().verifySchoolIsBeenAdded(schoolName);
+		assertTrue(isFound);
 		
-		throw new io.cucumber.java.PendingException();
 	}
 	@Then("delete the duection info")
 	public void deleteTheDuectionInfo(DataTable dataTable) {
-	   
-		
-		throw new io.cucumber.java.PendingException();
+		String schoolName = dataTable.asMap().get("school");
+		pages.dashboardPage().deleteGivenSchool(schoolName);
 	}
 
 }

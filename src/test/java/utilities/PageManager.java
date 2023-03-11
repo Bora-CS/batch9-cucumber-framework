@@ -16,6 +16,7 @@ public class PageManager {
 	private PostPage postPage;
 	private CommonPage commonPage;
 	private AddExperiencePage addExperiencePage;
+	private AddEducationPage addEducationPage;
 
 	private PageManager(WebDriver driver) {
 		this.driver = driver;
@@ -81,6 +82,13 @@ public class PageManager {
 			addExperiencePage = new AddExperiencePage(driver);
 		}
 		return addExperiencePage;
+	}
+	
+	public AddEducationPage addEducationPage() {
+		if (addEducationPage == null) {
+			addEducationPage = new AddEducationPage(driver);
+		}
+		return addEducationPage;
 	}
 
 }
