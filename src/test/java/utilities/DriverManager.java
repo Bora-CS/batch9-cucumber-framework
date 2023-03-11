@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverManager {
 
@@ -24,7 +25,9 @@ public class DriverManager {
 		try {
 			if (driver == null) {
 				System.setProperty("webdriver.chrome.driver", getDriverPath());
-				driver = new ChromeDriver();
+				ChromeOptions cOption = new ChromeOptions();
+				cOption.addArguments("--remote-allow-origins=*");
+				driver = new ChromeDriver(cOption);
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 			}
 		} catch (Exception e) {
