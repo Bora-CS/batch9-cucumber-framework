@@ -32,8 +32,7 @@ public class Util {
 		WebElement field = driver.findElement(locator);
 		field.sendKeys(value);
 	}
-	
-	
+
 	public static String getText(WebDriver driver, By locator) {
 		return driver.findElement(locator).getText();
 	}
@@ -124,14 +123,11 @@ public class Util {
 		int sixDigit = random.nextInt(999999 + 1 - 100000) + 100000;
 		return sixDigit;
 	}
-	
-	
-	
-	/***Verify****/
-	
+
+	/*** Verify ****/
 	public static boolean verifyElementExist(WebDriver driver, By locator) {
 		List<WebElement> elems = driver.findElements(locator);
-		return elems.size()>0;
+		return elems.size() > 0;
 	}
-	
+
 }
