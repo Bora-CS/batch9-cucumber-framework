@@ -127,7 +127,7 @@ public class Util {
 	/*
 	 * Verify if an element exist
 	 * 
-	 * @Author: Nurzat Ejat
+	 * @Author: Nurzat Ejat (宅男扎哥)
 	 */
 	public static boolean verifyElementExist(WebDriver driver, By locator) {
 		List<WebElement> elems = driver.findElements(locator);
