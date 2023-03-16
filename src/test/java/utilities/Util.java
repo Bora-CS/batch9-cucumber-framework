@@ -124,7 +124,11 @@ public class Util {
 		return sixDigit;
 	}
 
-	/*** Verify ****/
+	/*
+	 * Verify if an element exist
+	 * 
+	 * @Author: Nurzat Ejat
+	 */
 	public static boolean verifyElementExist(WebDriver driver, By locator) {
 		List<WebElement> elems = driver.findElements(locator);
 		return elems.size() > 0;
