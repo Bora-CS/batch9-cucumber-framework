@@ -10,7 +10,6 @@ import static utilities.ObjectRepository.locator;
 public class SeleniumWithObjectRepository {
 
 	public static void main(String[] args) {
-
 		try {
 			WebDriver driver = DriverManager.getInstance();
 			driver.get("https://www.amazon.com/");
@@ -22,13 +21,11 @@ public class SeleniumWithObjectRepository {
 
 			String resultSummary = driver.findElement(locator("SearchResultPage.ResultCountSummary")).getText();
 			System.out.println(resultSummary);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DriverManager.tearDown();
 		}
-
 	}
 
 }
