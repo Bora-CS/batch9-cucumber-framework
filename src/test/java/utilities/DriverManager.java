@@ -15,41 +15,52 @@ public class DriverManager {
 	private static final String DRIVER_MAC_M1 = "src/test/resources/drivers/chromedriver_mac_m1";
 	private static final String DRIVER_WINDOWS = "src/test/resources/drivers/chromedriver_windows.exe";
 
-	private static WebDriver driver;
-	private static String customSessionId;
+	private static ThreadLocal<WebDriver> threadLocalDriver;
+	private static ThreadLocal<String> threadLocalSessionId;
 
 	private DriverManager() {
 	};
 
 	public static WebDriver getInstance() {
 		try {
-			if (driver == null) {
+			if (threadLocalDriver == null) {
+				threadLocalDriver = new ThreadLocal<WebDriver>();
+			}
+
+			if (threadLocalDriver.get() == null) {
 				System.setProperty("webdriver.chrome.driver", getDriverPath());
 				ChromeOptions cOption = new ChromeOptions();
 				cOption.addArguments("--remote-allow-origins=*");
-				driver = new ChromeDriver(cOption);
+				WebDriver driver = new ChromeDriver(cOption);
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+				threadLocalDriver.set(driver);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			assertTrue(false, e.getMessage());
 		}
-		return driver;
+		return threadLocalDriver.get();
 	}
 
 	public static String getSessionId() {
-		if (customSessionId == null) {
-			customSessionId = Util.get6DigitCode() + "";
+		if (threadLocalSessionId == null) {
+			threadLocalSessionId = new ThreadLocal<String>();
 		}
-		return customSessionId;
+
+		if (threadLocalSessionId.get() == null) {
+			String customSessionId = Util.get6DigitCode() + "";
+			threadLocalSessionId.set(customSessionId);
+		}
+		return threadLocalSessionId.get();
 	}
 
 	public static void tearDown() {
-		if (driver != null) {
-			driver.quit();
-			driver = null;
+		if (threadLocalDriver.get() != null) {
+			threadLocalDriver.get().quit();
+			threadLocalDriver.set(null);
 		}
-		if (customSessionId != null) {
-			customSessionId = null;
+		if (threadLocalSessionId.get() != null) {
+			threadLocalSessionId.set(null);
 		}
 	}
 

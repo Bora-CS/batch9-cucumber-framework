@@ -9,7 +9,7 @@ Feature: Post
     Then [API] user can create a post
       | content | Hello World! |
 
-  @Regression @Smoke @UI @Happy
+  @Regression @Smoke @UI @Happy @Parallel
   Scenario: Create Post
     Given user is logged in
       | username | muradil.erkin@boratechschool.com |
