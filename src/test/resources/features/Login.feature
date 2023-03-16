@@ -23,7 +23,7 @@ Feature: Login
       | muradil.erkin123@boratechschool.com | Boratech    |        400 | Invalid credentials |
       | muradil.erkin@hello                 | Boratech    |        400 | Invalid email       |
 
-  @UI @Regression @Smoke @Happy
+  @UI @Regression @Smoke @Happy @Parallel
   Scenario: Happy path login
     Given user is on the boratech practice site homepage
     When user navigates to the login page

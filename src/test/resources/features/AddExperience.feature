@@ -31,7 +31,7 @@ Feature: Add Experience
       | Paw Patrol |                | California |            | false   | 2012-06-01 | Awesome     |        400 | From date is required | Company is required |                   |
       |            |                | California |            | false   | 2012-06-01 | Awesome     |        400 | From date is required | Company is required | Title is required |
 
-  @Happy @Regression @Smoke @UI
+  @Happy @Regression @Smoke @UI @Parallel
   Scenario: Happy Path
     Given user is logged in
       | username | muradil.erkin@boratechschool.com |

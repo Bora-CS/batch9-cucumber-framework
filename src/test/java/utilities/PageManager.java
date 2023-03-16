@@ -6,7 +6,7 @@ import pageObjects.*;
 
 public class PageManager {
 
-	private static PageManager pageManager;
+	private static ThreadLocal<PageManager> threadLocalPageManager;
 	private WebDriver driver;
 
 	private HomePage homePage;
@@ -23,15 +23,21 @@ public class PageManager {
 	}
 
 	public static PageManager getInstance() {
-		if (pageManager == null) {
-			pageManager = new PageManager(DriverManager.getInstance());
+		if (threadLocalPageManager == null) {
+			threadLocalPageManager = new ThreadLocal<PageManager>();
 		}
-		return pageManager;
+
+		if (threadLocalPageManager.get() == null) {
+			PageManager pageManager = new PageManager(DriverManager.getInstance());
+			threadLocalPageManager.set(pageManager);
+		}
+
+		return threadLocalPageManager.get();
 	}
 
 	public static void cleanup() {
-		if (pageManager != null) {
-			pageManager = null;
+		if (threadLocalPageManager.get() != null) {
+			threadLocalPageManager.set(null);
 		}
 	}
 
@@ -83,7 +89,7 @@ public class PageManager {
 		}
 		return addExperiencePage;
 	}
-	
+
 	public AddEducationPage addEducationPage() {
 		if (addEducationPage == null) {
 			addEducationPage = new AddEducationPage(driver);

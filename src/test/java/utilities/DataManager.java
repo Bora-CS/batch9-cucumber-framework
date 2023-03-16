@@ -8,21 +8,27 @@ import pojo.User;
 public class DataManager {
 
 	// Data Manager
-	private static DataManager dataManager;
+	private static ThreadLocal<DataManager> threadLocalDataManager;
 
 	private DataManager() {
 	};
 
 	public static DataManager getInstance() {
-		if (dataManager == null) {
-			dataManager = new DataManager();
+		if (threadLocalDataManager == null) {
+			threadLocalDataManager = new ThreadLocal<DataManager>();
 		}
-		return dataManager;
+
+		if (threadLocalDataManager.get() == null) {
+			DataManager dataManager = new DataManager();
+			threadLocalDataManager.set(dataManager);
+		}
+
+		return threadLocalDataManager.get();
 	}
 
 	public static void cleanUp() {
-		if (dataManager != null) {
-			dataManager = null;
+		if (threadLocalDataManager.get() != null) {
+			threadLocalDataManager.set(null);
 		}
 	}
 
