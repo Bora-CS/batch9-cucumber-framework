@@ -125,7 +125,7 @@ public class Util {
 	}
 
 	/*
-	 * Verify if an element exist
+	 * Verify if element exist
 	 * 
 	 * @Author: Nurzat Ejat (宅男扎哥)
 	 */
