@@ -7,8 +7,10 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
 
 public class Util {
 	/*
@@ -133,5 +135,27 @@ public class Util {
 		List<WebElement> elems = driver.findElements(locator);
 		return elems.size() > 0;
 	}
+
+}
+
+
+    /* Switches the driver focus between the windows.
+	 * 
+	 * @Author Jolene Jones
+	 */
+
+	public static void switchToNewWindows(WebDriver driver, By locater) {
+
+		String parent = driver.getWindowHandle();
+		driver.findElement(locater).click();
+		for (String newwin : driver.getWindowHandles()) {
+			driver.switchTo().window(newwin);
+		}
+		driver.close();
+		driver.switchTo().window(parent);
+
+	}
+
+}
 
 }
